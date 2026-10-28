@@ -22,8 +22,8 @@ defineProps<{
         <div class="relative hidden h-full flex-col bg-muted p-10 text-white lg:flex dark:border-r">
             <div class="absolute inset-0 bg-zinc-900" />
             <Link :href="home()" class="relative z-20 flex items-center text-lg font-medium">
-                <AppLogoIcon class="mr-2 size-8 fill-current text-white" />
-                {{ name }}
+                <AppLogoIcon class="mr-2.5 size-10 rounded-full object-contain" />
+                {{ name && name !== 'Laravel' ? name : 'SDN-NDIS' }}
             </Link>
         </div>
         <div class="flex w-full items-center justify-center px-4 py-10 sm:px-6 lg:p-8">

@@ -12,7 +12,6 @@ import {
 import { SidebarTrigger } from '@/components/ui/sidebar';
 import UserMenuContent from '@/components/UserMenuContent.vue';
 import AppearanceTabs from '@/components/AppearanceTabs.vue'; 
-import ThemeSwitcher from '@/components/ThemeSwitcher.vue';
 import { getInitials } from '@/composables/useInitials';
 import type { BreadcrumbItem } from '@/types';
 
@@ -40,7 +39,6 @@ const auth = computed(() => page.props.auth);
             </template>
 
             <div class="ml-auto flex items-center gap-2">
-                 <ThemeSwitcher />
                 <AppearanceTabs />
 
                 <DropdownMenu>

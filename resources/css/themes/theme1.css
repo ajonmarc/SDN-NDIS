@@ -2,112 +2,178 @@
 
 @custom-variant dark (&:is(.dark *));
 
+/*
+ * SDN-NDIS Theme — Surigao del Norte Natural Disaster Web-Based Information System
+ * Palette derived directly from the official SDN-NDIS Emblem (/logo.png):
+ *   - Deep Ocean Navy:    #033956
+ *   - Surigao Wave Teal:  #008b9e / #007687
+ *   - Sunburst Orange:    #f37f20
+ *   - Emergency Red:      #dc2626
+ */
 :root {
-  --background: #cccccc;
-  --foreground: #1f1f1f;
-  --card: #b0b0b0;
-  --card-foreground: #1f1f1f;
-  --popover: #b0b0b0;
-  --popover-foreground: #1f1f1f;
-  --primary: #b71c1c;
+  /* Daylight Operations Mode — Crisp coastal-slate & white surfaces */
+  --background: #f4f8fa;
+  --foreground: #032539;
+  --card: #ffffff;
+  --card-foreground: #032539;
+  --popover: #ffffff;
+  --popover-foreground: #032539;
+
+  /* Primary: Surigao Wave & Island Teal (from logo center map & waves) */
+  --primary: #007687;
   --primary-foreground: #ffffff;
-  --secondary: #556b2f;
+
+  /* Secondary: Deep Ocean Emblem Navy (from logo outer ring) */
+  --secondary: #033956;
   --secondary-foreground: #ffffff;
-  --muted: #b8b8b8;
-  --muted-foreground: #4a4a4a;
-  --accent: #4682b4;
-  --accent-foreground: #ffffff;
-  --destructive: #ff6f00;
-  --destructive-foreground: #000000;
-  --border: #505050;
-  --input: #505050;
-  --ring: #b71c1c;
-  --chart-1: #b71c1c;
-  --chart-2: #556b2f;
-  --chart-3: #4682b4;
-  --chart-4: #ff6f00;
-  --chart-5: #8d6e63;
-  --sidebar: #b0b0b0;
-  --sidebar-foreground: #1f1f1f;
-  --sidebar-primary: #b71c1c;
+
+  /* Muted: Soft coastal mist for table headers, secondary panels & metadata */
+  --muted: #e6f0f4;
+  --muted-foreground: #3b5c6e;
+
+  /* Accent: Light Aqua-Teal tint for hover/active states */
+  --accent: #d8f1f5;
+  --accent-foreground: #033956;
+
+  /* Destructive: High-Alert Emergency Red */
+  --destructive: #dc2626;
+  --destructive-foreground: #ffffff;
+
+  /* Semantic Disaster & Evacuation Status Colors (matching logo Sunburst Orange) */
+  --success: #16a34a;
+  --success-foreground: #ffffff;
+  --warning: #f37f20;
+  --warning-foreground: #ffffff;
+  --info: #008b9e;
+  --info-foreground: #ffffff;
+
+  /* Borders, Inputs & Focus Rings */
+  --border: #c2d6e0;
+  --input: #c2d6e0;
+  --ring: #008b9e;
+
+  /* GIS & Disaster Analytics Palette (Teal, Sunburst Orange, Ocean Navy, Alert Red, Safe Green) */
+  --chart-1: #008b9e;
+  --chart-2: #f37f20;
+  --chart-3: #033956;
+  --chart-4: #dc2626;
+  --chart-5: #16a34a;
+
+  /* Sidebar: Clean Tactical Navigation Panel */
+  --sidebar: #ebf3f6;
+  --sidebar-foreground: #032539;
+  --sidebar-primary: #033956;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #4682b4;
-  --sidebar-accent-foreground: #ffffff;
-  --sidebar-border: #505050;
-  --sidebar-ring: #b71c1c;
-  --font-sans: "Oxanium", sans-serif;
+  --sidebar-accent: #d5e9ef;
+  --sidebar-accent-foreground: #00606f;
+  --sidebar-border: #c2d6e0;
+  --sidebar-ring: #008b9e;
+
+  /* Typography & Tactical Geometry */
+  --font-sans: "Oxanium", ui-sans-serif, system-ui, sans-serif;
   --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: "Source Code Pro", monospace;
-  --radius: 0px;
+  --font-mono: "Source Code Pro", ui-monospace, SFMono-Regular, monospace;
+  --radius: 0.375rem;
+
+  /* Crisp Elevation Shadows */
   --shadow-x: 0px;
   --shadow-y: 2px;
-  --shadow-blur: 4px;
+  --shadow-blur: 6px;
   --shadow-spread: 0px;
-  --shadow-opacity: 0.4;
-  --shadow-color: hsl(0 0% 0%);
-  --shadow-2xs: 0px 2px 4px 0px hsl(0 0% 0% / 0.20);
-  --shadow-xs: 0px 2px 4px 0px hsl(0 0% 0% / 0.20);
-  --shadow-sm: 0px 2px 4px 0px hsl(0 0% 0% / 0.40), 0px 1px 2px -1px hsl(0 0% 0% / 0.40);
-  --shadow: 0px 2px 4px 0px hsl(0 0% 0% / 0.40), 0px 1px 2px -1px hsl(0 0% 0% / 0.40);
-  --shadow-md: 0px 2px 4px 0px hsl(0 0% 0% / 0.40), 0px 2px 4px -1px hsl(0 0% 0% / 0.40);
-  --shadow-lg: 0px 2px 4px 0px hsl(0 0% 0% / 0.40), 0px 4px 6px -1px hsl(0 0% 0% / 0.40);
-  --shadow-xl: 0px 2px 4px 0px hsl(0 0% 0% / 0.40), 0px 8px 10px -1px hsl(0 0% 0% / 0.40);
-  --shadow-2xl: 0px 2px 4px 0px hsl(0 0% 0% / 1.00);
+  --shadow-opacity: 0.08;
+  --shadow-color: hsl(201 93% 12%);
+  --shadow-2xs: 0px 1px 2px 0px hsl(201 93% 12% / 0.05);
+  --shadow-xs: 0px 1px 3px 0px hsl(201 93% 12% / 0.08);
+  --shadow-sm: 0px 2px 4px 0px hsl(201 93% 12% / 0.08), 0px 1px 2px -1px hsl(201 93% 12% / 0.06);
+  --shadow: 0px 4px 6px -1px hsl(201 93% 12% / 0.10), 0px 2px 4px -2px hsl(201 93% 12% / 0.08);
+  --shadow-md: 0px 6px 12px -2px hsl(201 93% 12% / 0.12), 0px 3px 6px -3px hsl(201 93% 12% / 0.08);
+  --shadow-lg: 0px 10px 15px -3px hsl(201 93% 12% / 0.14), 0px 4px 6px -4px hsl(201 93% 12% / 0.10);
+  --shadow-xl: 0px 20px 25px -5px hsl(201 93% 12% / 0.16), 0px 8px 10px -6px hsl(201 93% 12% / 0.10);
+  --shadow-2xl: 0px 25px 50px -12px hsl(201 93% 12% / 0.28);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 }
 
 .dark {
-  --background: #1a1a1a;
-  --foreground: #e0e0e0;
-  --card: #2a2a2a;
-  --card-foreground: #e0e0e0;
-  --popover: #2a2a2a;
-  --popover-foreground: #e0e0e0;
-  --primary: #e53935;
-  --primary-foreground: #ffffff;
-  --secondary: #689f38;
-  --secondary-foreground: #000000;
-  --muted: #252525;
-  --muted-foreground: #a0a0a0;
-  --accent: #64b5f6;
-  --accent-foreground: #000000;
-  --destructive: #ffa000;
-  --destructive-foreground: #000000;
-  --border: #4a4a4a;
-  --input: #4a4a4a;
-  --ring: #e53935;
-  --chart-1: #e53935;
-  --chart-2: #689f38;
-  --chart-3: #64b5f6;
-  --chart-4: #ffa000;
-  --chart-5: #a1887f;
-  --sidebar: #141414;
-  --sidebar-foreground: #e0e0e0;
-  --sidebar-primary: #e53935;
-  --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #64b5f6;
-  --sidebar-accent-foreground: #000000;
-  --sidebar-border: #4a4a4a;
-  --sidebar-ring: #e53935;
-  --font-sans: "Oxanium", sans-serif;
+  /* 24/7 Emergency Operations Center (EOC) Night-Watch Mode — Deep Surigao Ocean Navy */
+  --background: #021824;
+  --foreground: #e6f4f8;
+  --card: #042436;
+  --card-foreground: #e6f4f8;
+  --popover: #062e45;
+  --popover-foreground: #e6f4f8;
+
+  /* Primary: Luminous Surigao Wave Cyan-Teal */
+  --primary: #00a8bf;
+  --primary-foreground: #021824;
+
+  /* Secondary: Sunburst Emblem Orange-Gold for high-contrast secondary actions */
+  --secondary: #f37f20;
+  --secondary-foreground: #021824;
+
+  /* Muted: Deep ocean slate for low-glare night monitoring */
+  --muted: #07324a;
+  --muted-foreground: #8ab4c7;
+
+  /* Accent: Deep Teal highlight on dark command panels */
+  --accent: #093b57;
+  --accent-foreground: #38e0f5;
+
+  /* Destructive: High-Visibility Emergency Alert Red */
+  --destructive: #ef4444;
+  --destructive-foreground: #ffffff;
+
+  /* Semantic Disaster & Evacuation Status Colors */
+  --success: #22c55e;
+  --success-foreground: #052e16;
+  --warning: #f37f20;
+  --warning-foreground: #021824;
+  --info: #00b4cc;
+  --info-foreground: #021824;
+
+  /* Borders, Inputs & Focus Rings */
+  --border: #0e4869;
+  --input: #0e4869;
+  --ring: #00a8bf;
+
+  /* GIS & Disaster Analytics Palette (Night Mode) */
+  --chart-1: #00b4cc;
+  --chart-2: #f37f20;
+  --chart-3: #38bdf8;
+  --chart-4: #ef4444;
+  --chart-5: #22c55e;
+
+  /* Sidebar: Deepest Ocean Command Console Navigation */
+  --sidebar: #01111a;
+  --sidebar-foreground: #e6f4f8;
+  --sidebar-primary: #00a8bf;
+  --sidebar-primary-foreground: #021824;
+  --sidebar-accent: #062e45;
+  --sidebar-accent-foreground: #38e0f5;
+  --sidebar-border: #0a3852;
+  --sidebar-ring: #00a8bf;
+
+  /* Typography & Tactical Geometry */
+  --font-sans: "Oxanium", ui-sans-serif, system-ui, sans-serif;
   --font-serif: ui-serif, Georgia, Cambria, "Times New Roman", Times, serif;
-  --font-mono: "Source Code Pro", monospace;
-  --radius: 0px;
+  --font-mono: "Source Code Pro", ui-monospace, SFMono-Regular, monospace;
+  --radius: 0.375rem;
+
+  /* Deep Night-Mode Shadows */
   --shadow-x: 0px;
   --shadow-y: 2px;
-  --shadow-blur: 5px;
+  --shadow-blur: 8px;
   --shadow-spread: 0px;
-  --shadow-opacity: 0.6;
-  --shadow-color: hsl(0 0% 0%);
-  --shadow-2xs: 0px 2px 5px 0px hsl(0 0% 0% / 0.30);
-  --shadow-xs: 0px 2px 5px 0px hsl(0 0% 0% / 0.30);
-  --shadow-sm: 0px 2px 5px 0px hsl(0 0% 0% / 0.60), 0px 1px 2px -1px hsl(0 0% 0% / 0.60);
-  --shadow: 0px 2px 5px 0px hsl(0 0% 0% / 0.60), 0px 1px 2px -1px hsl(0 0% 0% / 0.60);
-  --shadow-md: 0px 2px 5px 0px hsl(0 0% 0% / 0.60), 0px 2px 4px -1px hsl(0 0% 0% / 0.60);
-  --shadow-lg: 0px 2px 5px 0px hsl(0 0% 0% / 0.60), 0px 4px 6px -1px hsl(0 0% 0% / 0.60);
-  --shadow-xl: 0px 2px 5px 0px hsl(0 0% 0% / 0.60), 0px 8px 10px -1px hsl(0 0% 0% / 0.60);
-  --shadow-2xl: 0px 2px 5px 0px hsl(0 0% 0% / 1.50);
+  --shadow-opacity: 0.55;
+  --shadow-color: hsl(201 95% 3%);
+  --shadow-2xs: 0px 1px 2px 0px hsl(201 95% 3% / 0.35);
+  --shadow-xs: 0px 2px 4px 0px hsl(201 95% 3% / 0.45);
+  --shadow-sm: 0px 2px 6px 0px hsl(201 95% 3% / 0.50), 0px 1px 2px -1px hsl(201 95% 3% / 0.40);
+  --shadow: 0px 4px 8px -1px hsl(201 95% 3% / 0.55), 0px 2px 4px -2px hsl(201 95% 3% / 0.45);
+  --shadow-md: 0px 6px 12px -2px hsl(201 95% 3% / 0.60), 0px 3px 6px -3px hsl(201 95% 3% / 0.50);
+  --shadow-lg: 0px 10px 20px -3px hsl(201 95% 3% / 0.65), 0px 4px 8px -4px hsl(201 95% 3% / 0.55);
+  --shadow-xl: 0px 20px 25px -5px hsl(201 95% 3% / 0.70), 0px 8px 10px -6px hsl(201 95% 3% / 0.60);
+  --shadow-2xl: 0px 25px 50px -12px hsl(201 95% 3% / 0.85);
 }
 
 @theme inline {
@@ -127,6 +193,12 @@
   --color-accent-foreground: var(--accent-foreground);
   --color-destructive: var(--destructive);
   --color-destructive-foreground: var(--destructive-foreground);
+  --color-success: var(--success);
+  --color-success-foreground: var(--success-foreground);
+  --color-warning: var(--warning);
+  --color-warning-foreground: var(--warning-foreground);
+  --color-info: var(--info);
+  --color-info-foreground: var(--info-foreground);
   --color-border: var(--border);
   --color-input: var(--input);
   --color-ring: var(--ring);
@@ -148,10 +220,10 @@
   --font-mono: var(--font-mono);
   --font-serif: var(--font-serif);
 
-  --radius-sm: calc(var(--radius) - 4px);
-  --radius-md: calc(var(--radius) - 2px);
-  --radius-lg: var(--radius);
-  --radius-xl: calc(var(--radius) + 4px);
+  --radius-sm: calc(var(--radius) - 2px);
+  --radius-md: var(--radius);
+  --radius-lg: calc(var(--radius) + 2px);
+  --radius-xl: calc(var(--radius) + 6px);
 
   --shadow-2xs: var(--shadow-2xs);
   --shadow-xs: var(--shadow-xs);

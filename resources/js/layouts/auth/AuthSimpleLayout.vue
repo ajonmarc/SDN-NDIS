@@ -21,10 +21,10 @@ defineProps<{
                         class="flex flex-col items-center gap-2 font-medium"
                     >
                         <div
-                            class="mb-1 flex h-9 w-9 items-center justify-center rounded-md"
+                            class="mb-1 flex size-20 items-center justify-center rounded-full shadow-sm"
                         >
                             <AppLogoIcon
-                                class="size-9 fill-current text-foreground dark:text-white"
+                                class="size-20 rounded-full object-contain"
                             />
                         </div>
                         <span class="sr-only">{{ title }}</span>
