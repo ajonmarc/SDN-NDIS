@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Pdrrmo\DashboardController;
 use App\Http\Controllers\Pdrrmo\UserController;
+use App\Http\Controllers\Pdrrmo\DocumentationController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('role:PDRRMO')
@@ -33,5 +34,8 @@ Route::middleware('role:PDRRMO')
         ])->name('users.data');
 
         Route::resource('users', UserController::class);
+
+        Route::get('documentation', [DocumentationController::class, 'index'])->name('documentation');  
+
 
     });

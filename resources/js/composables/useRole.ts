@@ -15,11 +15,10 @@ export function useRole() {
     const roleName = computed(() => user.value?.role?.name ?? null);
 
     const isPdrrmo = computed(() => roleName.value === 'PDRRMO');
-    const isSuperadmin = computed(() => roleName.value === 'Superadmin');
     const isGuest = computed(() => roleName.value === 'GUEST');
 
     const hasRole = (...roles: string[]) =>
         roleName.value !== null && roles.includes(roleName.value);
 
-    return { user, roleName, isPdrrmo, isSuperadmin, isGuest, hasRole };
+    return { user, roleName, isPdrrmo, isGuest, hasRole };
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\Superadmin;
+namespace App\Http\Controllers\Pdrrmo;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -11,6 +11,6 @@ class DocumentationController extends Controller
 {
       public function index(): Response
     {
-        return Inertia::render('superadmin/documentation/Index');
+        return Inertia::render('pdrrmo/documentation/Index');
     }
 }

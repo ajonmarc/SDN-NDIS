@@ -20,15 +20,13 @@ import { logout } from '@/routes';
 import { useRole } from '@/composables/useRole';
 
 import {
-    superadminNavItems,
     pdrrmoNavItems,
     guestNavItems,
 } from '@/navigation';
 
-const { isSuperadmin, isPdrrmo, isGuest } = useRole();
+const { isPdrrmo, isGuest } = useRole();
 
 const homeHref = computed(() => {
-    if (isSuperadmin.value) return '/superadmin/dashboard';
     if (isPdrrmo.value) return '/pdrrmo/dashboard';
     if (isGuest.value) return '/guest/dashboard';
 
@@ -38,7 +36,6 @@ const homeHref = computed(() => {
 const handleLogout = () => {
     router.flushAll();
 };
-
 </script>
 
 <template>
@@ -56,19 +53,10 @@ const handleLogout = () => {
         </SidebarHeader>
 
         <SidebarContent>
-   
-            <template v-if="isSuperadmin">
-                <NavMain label="Super Admin" :items="superadminNavItems" />
-                <NavMain label="PDRRMO" :items="pdrrmoNavItems" />
-                <NavMain label="Guest" :items="guestNavItems" />
-            </template>
-
-      
-            <template v-else-if="isPdrrmo">
+            <template v-if="isPdrrmo">
                 <NavMain label="PDRRMO" :items="pdrrmoNavItems" />
             </template>
 
-        
             <template v-else-if="isGuest">
                 <NavMain label="Guest" :items="guestNavItems" />
             </template>

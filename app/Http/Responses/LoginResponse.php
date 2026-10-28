@@ -13,7 +13,6 @@ class LoginResponse implements LoginResponseContract
         $roleName = $user?->role?->name;
 
         $redirectTo = match ($roleName) {
-            'Superadmin' => route('superadmin.dashboard'),
             'PDRRMO' => route('pdrrmo.dashboard'),
             'GUEST' => route('guest.dashboard'),
             default => route('home'),

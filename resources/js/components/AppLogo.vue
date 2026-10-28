@@ -16,7 +16,7 @@ const name = usePage().props.name;
             {{ name && name !== 'Laravel' ? name : 'SDN-NDIS' }}
         </span>
         <span class="truncate text-[11px] font-medium text-muted-foreground">
-            Surigao del Norte DRRMO
+            Surigao del Norte PDRRMO
         </span>
     </div>
 </template>

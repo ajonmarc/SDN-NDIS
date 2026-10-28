@@ -30,4 +30,9 @@ export const pdrrmoNavItems: NavItem[] = [
         ],
 
     },
+    {
+        title: 'Documentation',
+        href: '/pdrrmo/documentation',
+        icon: ClipboardList,
+    },      
 ];
