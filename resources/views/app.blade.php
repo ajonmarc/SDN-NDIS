@@ -52,6 +52,7 @@
 
 <body class="font-sans antialiased">
     <x-inertia::app />
+    @include('sweetalert2::index')
 </body>
 
 </html>

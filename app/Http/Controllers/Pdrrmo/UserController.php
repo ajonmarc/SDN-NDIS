@@ -12,6 +12,7 @@ use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Inertia\Response;
+use SweetAlert2\Laravel\Swal;
 
 class UserController extends Controller
 {
@@ -123,9 +124,9 @@ class UserController extends Controller
             $request->validated()
         );
 
-        Inertia::flash('toast', [
-            'type' => 'success',
-            'message' => 'User created successfully.',
+        Swal::success([
+            'title' => 'User Created!',
+            'text' => 'User created successfully.',
         ]);
 
         return redirect()->route('pdrrmo.users.index');
@@ -175,9 +176,9 @@ class UserController extends Controller
 
         $user->update($data);
 
-        Inertia::flash('toast', [
-            'type' => 'success',
-            'message' => 'User updated successfully.',
+        Swal::success([
+            'title' => 'User Updated!',
+            'text' => 'User updated successfully.',
         ]);
 
         return redirect()->route('pdrrmo.users.index');
@@ -194,9 +195,9 @@ class UserController extends Controller
     {
         // Protected users cannot be deleted.
         if ($user->is_protected) {
-            Inertia::flash('toast', [
-                'type' => 'error',
-                'message' => 'This user is protected and cannot be deleted.',
+            Swal::error([
+                'title' => 'Action Denied',
+                'text' => 'This user is protected and cannot be deleted.',
             ]);
 
             return redirect()->route('pdrrmo.users.index');
@@ -205,9 +206,9 @@ class UserController extends Controller
 
         // Prevent deleting your own account.
         if ($user->id === auth()->id()) {
-            Inertia::flash('toast', [
-                'type' => 'error',
-                'message' => 'You cannot delete your own account.',
+            Swal::error([
+                'title' => 'Action Denied',
+                'text' => 'You cannot delete your own account.',
             ]);
 
             return redirect()->route('pdrrmo.users.index');
@@ -216,9 +217,9 @@ class UserController extends Controller
 
         $user->delete();
 
-        Inertia::flash('toast', [
-            'type' => 'success',
-            'message' => 'User deleted successfully.',
+        Swal::success([
+            'title' => 'User Deleted!',
+            'text' => 'User deleted successfully.',
         ]);
 
         return redirect()->route('pdrrmo.users.index');

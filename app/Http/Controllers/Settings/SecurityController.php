@@ -10,6 +10,7 @@ use Illuminate\Validation\Rules\Password;
 use Inertia\Inertia;
 use Inertia\Response;
 use Laravel\Fortify\Features;
+use SweetAlert2\Laravel\Swal;
 
 class SecurityController extends Controller
 {
@@ -59,7 +60,10 @@ class SecurityController extends Controller
             'password' => $request->password,
         ]);
 
-        Inertia::flash('toast', ['type' => 'success', 'message' => __('Password updated.')]);
+        Swal::success([
+            'title' => 'Saved!',
+            'text' => __('Password updated.'),
+        ]);
 
         return back();
     }

@@ -12,17 +12,8 @@ import SimpleTable from '@kikiloaw/simple-table';
 import { Pencil, Plus, Trash2 } from '@lucide/vue';
 
 import Heading from '@/components/Heading.vue';
-
 import { Button } from '@/components/ui/button';
-
-import {
-    Dialog,
-    DialogContent,
-    DialogDescription,
-    DialogFooter,
-    DialogHeader,
-    DialogTitle,
-} from '@/components/ui/dialog';
+import { getSwal } from '@/lib/swal';
 
 import {
     index,
@@ -55,9 +46,6 @@ interface User {
 | State
 |--------------------------------------------------------------------------
 */
-
-// Selected record for delete confirmation
-const deleteTarget = ref<User | null>(null);
 
 // SimpleTable reference
 const tableRef = ref();
@@ -98,7 +86,6 @@ const columns = [
         key: 'actions',
         label: 'Actions',
         sortable: false,
-
     },
 ];
 
@@ -110,34 +97,37 @@ const columns = [
 */
 
 /**
- * Open the delete confirmation dialog.
+ * Open the SweetAlert2 delete confirmation modal and delete if confirmed.
  */
-const confirmDelete = (user: User) => {
-    deleteTarget.value = user;
-};
-
-
-/**
- * Delete the selected user.
- */
-const performDelete = () => {
-    // Stop if there is no selected user
-    // or a delete request is already running.
-    if (!deleteTarget.value || deleting.value) {
+const confirmDelete = async (user: User) => {
+    if (deleting.value) {
         return;
     }
 
-    const userId = deleteTarget.value.id;
+    const Swal = await getSwal();
+
+    const result = await Swal.fire({
+        title: 'Delete user?',
+        html: `This will permanently delete <strong>${user.name}</strong>.<br>This action cannot be undone.`,
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#dc2626',
+        cancelButtonColor: '#64748b',
+        confirmButtonText: 'Yes, delete user!',
+        cancelButtonText: 'Cancel',
+        reverseButtons: true,
+    });
+
+    if (!result.isConfirmed) {
+        return;
+    }
 
     deleting.value = true;
 
-    router.delete(destroy(userId).url, {
+    router.delete(destroy(user.id).url, {
         preserveScroll: true,
 
         onSuccess: () => {
-            // Close the confirmation dialog
-            deleteTarget.value = null;
-
             // Refresh SimpleTable data
             tableRef.value?.clearCache('current');
         },
@@ -208,7 +198,6 @@ defineOptions({
 
                 <template v-slot:[`cell-actions`]="{ row }">
 
-
                     <div class="inline-flex items-center gap-2">
                         <!-- Edit -->
                         <Button as-child variant="outline" size="icon" title="Edit user">
@@ -216,7 +205,6 @@ defineOptions({
                                 <Pencil class="h-4 w-4" />
                             </Link>
                         </Button>
-
 
                         <!-- Delete -->
                         <Button variant="destructive" size="icon" title="Delete user" :disabled="deleting"
@@ -231,61 +219,6 @@ defineOptions({
             </SimpleTable>
 
         </div>
-
-
-        <!-- ==========================================================
-             Delete Confirmation
-        =========================================================== -->
-
-        <Dialog :open="!!deleteTarget" @update:open="(value) => {
-            if (!value && !deleting) {
-                deleteTarget = null;
-            }
-        }">
-
-            <DialogContent>
-
-                <!-- Dialog Header -->
-                <DialogHeader>
-
-                    <DialogTitle>
-                        Delete user?
-                    </DialogTitle>
-
-                    <DialogDescription>
-                        This will permanently delete
-                        <strong>
-                            {{ deleteTarget?.name }}
-                        </strong>.
-                        This action cannot be undone.
-                    </DialogDescription>
-
-                </DialogHeader>
-
-
-                <!-- Dialog Footer -->
-                <DialogFooter>
-
-                    <!-- Cancel -->
-                    <Button variant="outline" :disabled="deleting" @click="deleteTarget = null">
-                        Cancel
-                    </Button>
-
-
-                    <!-- Delete -->
-                    <Button variant="destructive" :disabled="deleting" @click="performDelete">
-
-                        <Trash2 v-if="!deleting" class="mr-2 h-4 w-4" />
-
-                        {{ deleting ? 'Deleting...' : 'Delete' }}
-
-                    </Button>
-
-                </DialogFooter>
-
-            </DialogContent>
-
-        </Dialog>
 
     </div>
 </template>
