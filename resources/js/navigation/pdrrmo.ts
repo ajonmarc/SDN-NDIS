@@ -16,29 +16,37 @@ export const pdrrmoNavItems: NavItem[] = [
         icon: LayoutGrid,
     },
     {
-        title: 'Municipalities',
-        href: '/pdrrmo/municipalities',
-        icon: MapPin,
-    },
-    {
-        title: 'Disaster Types',
-        href: '/pdrrmo/disaster-types',
-        icon: Tags,
-    },
-    {
-        title: 'Disasters',
+        title: 'Disaster Management',
         href: '/pdrrmo/disasters',
         icon: AlertTriangle,
-    },
-    {
-        title: 'Disaster Updates',
-        href: '/pdrrmo/disaster-updates',
-        icon: Megaphone,
+        isActive: true,
+        items: [
+            {
+                title: 'Disasters',
+                href: '/pdrrmo/disasters',
+                icon: AlertTriangle,
+            },
+            {
+                title: 'Disaster Updates',
+                href: '/pdrrmo/disaster-updates',
+                icon: Megaphone,
+            },
+            {
+                title: 'Disaster Types',
+                href: '/pdrrmo/disaster-types',
+                icon: Tags,
+            },
+        ],
     },
     {
         title: 'Evacuation Centers',
         href: '/pdrrmo/evacuation-centers',
         icon: Building2,
+    },
+    {
+        title: 'Municipalities',
+        href: '/pdrrmo/municipalities',
+        icon: MapPin,
     },
     {
         title: 'Access Logs',

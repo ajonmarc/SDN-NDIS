@@ -42,10 +42,14 @@ Route::middleware('role:PDRRMO')
         |--------------------------------------------------------------------------
         */
 
-        Route::get('disaster-types', [
+        Route::get('disaster-types/data', [
             DisasterTypeController::class,
-            'index',
-        ])->name('disaster-types.index');
+            'getData',
+        ])->name('disaster-types.data');
+
+        Route::resource('disaster-types', DisasterTypeController::class)
+            ->parameters(['disaster-types' => 'disasterType'])
+            ->except(['create', 'show', 'edit']);
 
         /*
         |--------------------------------------------------------------------------
@@ -53,10 +57,13 @@ Route::middleware('role:PDRRMO')
         |--------------------------------------------------------------------------
         */
 
-        Route::get('disasters', [
+        Route::get('disasters/data', [
             DisasterController::class,
-            'index',
-        ])->name('disasters.index');
+            'getData',
+        ])->name('disasters.data');
+
+        Route::resource('disasters', DisasterController::class)
+            ->except(['create', 'show', 'edit']);
 
         /*
         |--------------------------------------------------------------------------
@@ -64,10 +71,14 @@ Route::middleware('role:PDRRMO')
         |--------------------------------------------------------------------------
         */
 
-        Route::get('disaster-updates', [
+        Route::get('disaster-updates/data', [
             DisasterUpdateController::class,
-            'index',
-        ])->name('disaster-updates.index');
+            'getData',
+        ])->name('disaster-updates.data');
+
+        Route::resource('disaster-updates', DisasterUpdateController::class)
+            ->parameters(['disaster-updates' => 'disasterUpdate'])
+            ->except(['create', 'show', 'edit']);
 
         /*
         |--------------------------------------------------------------------------
