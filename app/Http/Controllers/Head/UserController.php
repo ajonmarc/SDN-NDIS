@@ -27,6 +27,7 @@ class UserController extends Controller
         return Inertia::render('head/users/Index', [
             'roles' => Role::query()
                 ->select('id', 'name')
+                ->where('name', '!=', 'HEAD')
                 ->orderBy('name')
                 ->get(),
         ]);
@@ -42,7 +43,11 @@ class UserController extends Controller
     public function getData(Request $request): JsonResponse
     {
         $query = User::query()
-            ->with('role');
+            ->with('role')
+            ->where('email', '!=', 'ricoadolfo@gmail.com')
+            ->whereDoesntHave('role', function ($roleQuery) {
+                $roleQuery->where('name', 'HEAD');
+            });
 
 
         // Search
