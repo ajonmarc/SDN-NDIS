@@ -1,13 +1,12 @@
 <script setup lang="ts">
 import { Head } from '@inertiajs/vue3';
 import Heading from '@/components/Heading.vue';
-import { dashboard } from '@/routes/guest';
 
 defineOptions({
     layout: {
         breadcrumbs: [
             {
-                href: dashboard(),
+                href: '/guest/dashboard',
                 title: 'Dashboard',
             },
         ],
@@ -16,15 +15,11 @@ defineOptions({
 </script>
 
 <template>
-
-    <Head title="Dashboard" />
+    <Head title="Guest Dashboard" />
     <div class="px-4 py-6">
-        <Heading title="guest Dashboard" description="manage your guest dashboard" />
-
-        <div class="mt-6 max-w-2xl">
-            <section class="space-y-12">
-                main content
-            </section>
-        </div>
+        <Heading
+            title="Guest Dashboard"
+            description="Public overview of Surigao del Norte natural disaster alerts and evacuation center availability"
+        />
     </div>
 </template>
