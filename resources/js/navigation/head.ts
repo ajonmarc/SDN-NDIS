@@ -24,9 +24,9 @@ export const headNavItems: NavItem[] = [
             },
         ],
     },
-    {
-        title: 'Documentation',
-        href: '/head/documentation',
-        icon: ClipboardList,
-    },
+    // {
+    //     title: 'Documentation',
+    //     href: '/head/documentation',
+    //     icon: ClipboardList,
+    // },
 ];
