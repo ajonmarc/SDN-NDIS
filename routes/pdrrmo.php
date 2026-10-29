@@ -104,9 +104,19 @@ Route::middleware('role:PDRRMO')
         |--------------------------------------------------------------------------
         */
 
+        Route::get('access-logs/data', [
+            AccessLogController::class,
+            'getData',
+        ])->name('access-logs.data');
+
         Route::get('access-logs', [
             AccessLogController::class,
             'index',
         ])->name('access-logs.index');
+
+        Route::delete('access-logs/{accessLog}', [
+            AccessLogController::class,
+            'destroy',
+        ])->name('access-logs.destroy');
 
     });
