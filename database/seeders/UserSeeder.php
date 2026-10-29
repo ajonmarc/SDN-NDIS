@@ -26,7 +26,7 @@ class UserSeeder extends Seeder
         );
 
         User::updateOrCreate(
-            ['email' => 'PDRRMO@example.com'],
+            ['email' => 'pdrrmo@gmail.com'],
             [
                 'name' => 'PDRRMO',
                 'password' => Hash::make('password'),
@@ -35,7 +35,7 @@ class UserSeeder extends Seeder
         );
 
         User::updateOrCreate(
-            ['email' => 'GUEST@example.com'],
+            ['email' => 'guest@gmail.com'],
             [
                 'name' => 'GUEST',
                 'password' => Hash::make('password'),
