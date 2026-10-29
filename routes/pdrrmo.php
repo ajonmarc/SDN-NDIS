@@ -86,10 +86,14 @@ Route::middleware('role:PDRRMO')
         |--------------------------------------------------------------------------
         */
 
-        Route::get('evacuation-centers', [
+        Route::get('evacuation-centers/data', [
             EvacuationCenterController::class,
-            'index',
-        ])->name('evacuation-centers.index');
+            'getData',
+        ])->name('evacuation-centers.data');
+
+        Route::resource('evacuation-centers', EvacuationCenterController::class)
+            ->parameters(['evacuation-centers' => 'evacuationCenter'])
+            ->except(['create', 'show', 'edit']);
 
         /*
         |--------------------------------------------------------------------------
