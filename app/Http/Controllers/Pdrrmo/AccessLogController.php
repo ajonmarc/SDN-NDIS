@@ -21,7 +21,7 @@ class AccessLogController extends Controller
     public function getData(Request $request): JsonResponse
     {
         $query = AccessLog::query()
-            ->with(['user.roles']);
+            ->with(['user.role']);
 
         if ($search = $request->input('search')) {
             $query->where(function ($query) use ($search) {
@@ -59,7 +59,7 @@ class AccessLogController extends Controller
                         'user_id' => $log->user_id,
                         'user_name' => $log->user?->name ?? 'Anonymous Visitor',
                         'user_email' => $log->user?->email,
-                        'user_role' => $log->user?->roles->first()?->name,
+                        'user_role' => $log->user?->role?->name,
                         'event_type' => $log->event_type,
                         'ip_address' => $log->ip_address ?? 'Unknown',
                         'accessed_at' => $log->accessed_at?->format('M d, Y h:i:s A') ?? 'N/A',
