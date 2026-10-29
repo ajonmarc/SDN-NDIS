@@ -4,9 +4,10 @@ import { computed } from 'vue';
 import { login, register } from '@/routes';
 import { useRole } from '@/composables/useRole';
 
-const { isPdrrmo, isGuest } = useRole();
+const { isHead, isPdrrmo, isGuest } = useRole();
 
 const homeHref = computed(() => {
+    if (isHead.value) return '/head/dashboard';
     if (isPdrrmo.value) return '/pdrrmo/dashboard';
     if (isGuest.value) return '/guest/dashboard';
     return '/';

@@ -5,7 +5,7 @@ import { DateFormatter, getLocalTimeZone, today } from '@internationalized/date'
 import { Head } from '@inertiajs/vue3';
 import { toast } from 'vue-sonner';
 import Heading from '@/components/Heading.vue';
-import { documentation } from '@/routes/pdrrmo';
+import { documentation } from '@/routes/head';
 import type { DateRange } from 'reka-ui';
 import { RangeCalendar } from '@/components/ui/range-calendar';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';

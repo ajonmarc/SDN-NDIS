@@ -1,4 +1,3 @@
-//resources/js/pages/admin/users/Form.vue
 <script setup lang="ts">
 import { Form, Link } from '@inertiajs/vue3';
 import InputError from '@/components/InputError.vue';
@@ -42,7 +41,6 @@ watch(() => props.user, (newUser) => {
 
 // Handle role change - accepts AcceptableValue type
 const handleRoleChange = (value: AcceptableValue) => {
-    // Convert AcceptableValue to string or undefined
     if (value === null || value === undefined) {
         selectedRoleId.value = undefined;
     } else {
@@ -120,3 +118,4 @@ const handleRoleChange = (value: AcceptableValue) => {
         </div>
     </Form>
 </template>
+

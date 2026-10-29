@@ -14,11 +14,12 @@ export function useRole() {
     const user = computed(() => page.props.auth?.user as User | undefined);
     const roleName = computed(() => user.value?.role?.name ?? null);
 
+    const isHead = computed(() => roleName.value === 'HEAD');
     const isPdrrmo = computed(() => roleName.value === 'PDRRMO');
     const isGuest = computed(() => roleName.value === 'GUEST');
 
     const hasRole = (...roles: string[]) =>
         roleName.value !== null && roles.includes(roleName.value);
 
-    return { user, roleName, isPdrrmo, isGuest, hasRole };
+    return { user, roleName, isHead, isPdrrmo, isGuest, hasRole };
 }

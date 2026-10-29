@@ -1,4 +1,3 @@
-//resources/js/pages/admin/users/Create.vue
 <script setup lang="ts">
 import { Head, Link } from '@inertiajs/vue3';
 import { ArrowLeft } from '@lucide/vue';
@@ -10,7 +9,7 @@ import {
     CardHeader,
 } from '@/components/ui/card';
 import Form from './Form.vue';
-import { index, store } from '@/routes/pdrrmo/users';
+import { index, store } from '@/routes/head/users';
 
 defineProps<{
     roles: { id: number; name: string }[];
@@ -53,3 +52,4 @@ defineOptions({
         </div>
     </div>
 </template>
+

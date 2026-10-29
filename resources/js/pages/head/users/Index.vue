@@ -21,7 +21,7 @@ import {
     edit,
     destroy,
     data,
-} from '@/routes/pdrrmo/users';
+} from '@/routes/head/users';
 
 
 /*
@@ -222,3 +222,4 @@ defineOptions({
 
     </div>
 </template>
+

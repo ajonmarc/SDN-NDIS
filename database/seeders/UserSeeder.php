@@ -11,11 +11,22 @@ class UserSeeder extends Seeder
 {
     public function run(): void
     {
+        $HEADRole = Role::firstOrCreate(['name' => 'HEAD']);
         $PDRRMORole = Role::firstOrCreate(['name' => 'PDRRMO']);
         $GUESTRole = Role::firstOrCreate(['name' => 'GUEST']);
 
         User::updateOrCreate(
-            ['email' => 'pdrrmo@gmail.com'],
+            ['email' => 'ricoadolfo@gmail.com'],
+            [
+                'name' => 'Rico Adolfo',
+                'password' => Hash::make('password'),
+                'role_id' => $HEADRole->id,
+                'is_protected' => true,
+            ]
+        );
+
+        User::updateOrCreate(
+            ['email' => 'PDRRMO@example.com'],
             [
                 'name' => 'PDRRMO',
                 'password' => Hash::make('password'),
@@ -24,7 +35,7 @@ class UserSeeder extends Seeder
         );
 
         User::updateOrCreate(
-            ['email' => 'guest@gmail.com'],
+            ['email' => 'GUEST@example.com'],
             [
                 'name' => 'GUEST',
                 'password' => Hash::make('password'),

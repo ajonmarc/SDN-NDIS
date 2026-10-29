@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Pdrrmo;
+namespace App\Http\Requests\Head;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -25,3 +25,4 @@ class UpdateUserRequest extends FormRequest
         ];
     }
 }
+

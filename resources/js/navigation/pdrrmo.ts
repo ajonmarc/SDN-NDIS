@@ -1,12 +1,6 @@
 import type { NavItem } from '@/types';
 import {
     LayoutGrid,
-    Users,
-    MapPin,
-    CalendarClock,
-    ClipboardList,
-    CreditCard,
-    CloudSun,
 } from '@lucide/vue';
 
 export const pdrrmoNavItems: NavItem[] = [
@@ -15,24 +9,4 @@ export const pdrrmoNavItems: NavItem[] = [
         href: '/pdrrmo/dashboard',
         icon: LayoutGrid,
     },
-
-    {
-        title: 'User Management',
-        href: '/pdrrmo/users',
-        icon: Users,
-        isActive: true,
-        items: [
-            {
-                title: 'Users',
-                href: '/pdrrmo/users',
-                icon: Users,
-            },
-        ],
-
-    },
-    {
-        title: 'Documentation',
-        href: '/pdrrmo/documentation',
-        icon: ClipboardList,
-    },      
 ];

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Requests\Pdrrmo;
+namespace App\Http\Requests\Head;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
@@ -10,7 +10,7 @@ class StoreUserRequest extends FormRequest
 {
     public function authorize(): bool
     {
-        return true; // middleware already restricts this route to Admin role
+        return true;
     }
 
     public function rules(): array
@@ -23,3 +23,4 @@ class StoreUserRequest extends FormRequest
         ];
     }
 }
+

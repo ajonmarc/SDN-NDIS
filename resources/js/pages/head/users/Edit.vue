@@ -5,9 +5,9 @@ import Heading from '@/components/Heading.vue';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardHeader } from '@/components/ui/card';
 import Form from './Form.vue';
-import { index, update } from '@/routes/pdrrmo/users';
+import { index, update } from '@/routes/head/users';
 
-const props = defineProps<{
+defineProps<{
     user: { id: number; name: string; email: string; role_id: number | null };
     roles: { id: number; name: string }[];
 }>();
@@ -50,3 +50,4 @@ defineOptions({
         </div>
     </div>
 </template>
+

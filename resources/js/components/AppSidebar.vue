@@ -20,13 +20,15 @@ import { logout } from '@/routes';
 import { useRole } from '@/composables/useRole';
 
 import {
+    headNavItems,
     pdrrmoNavItems,
     guestNavItems,
 } from '@/navigation';
 
-const { isPdrrmo, isGuest } = useRole();
+const { isHead, isPdrrmo, isGuest } = useRole();
 
 const homeHref = computed(() => {
+    if (isHead.value) return '/head/dashboard';
     if (isPdrrmo.value) return '/pdrrmo/dashboard';
     if (isGuest.value) return '/guest/dashboard';
 
@@ -53,7 +55,13 @@ const handleLogout = () => {
         </SidebarHeader>
 
         <SidebarContent>
-            <template v-if="isPdrrmo">
+            <template v-if="isHead">
+                <NavMain label="Head" :items="headNavItems" />
+                <NavMain label="PDRRMO" :items="pdrrmoNavItems" />
+                <NavMain label="Guest" :items="guestNavItems" />
+            </template>
+
+            <template v-else-if="isPdrrmo">
                 <NavMain label="PDRRMO" :items="pdrrmoNavItems" />
             </template>
 

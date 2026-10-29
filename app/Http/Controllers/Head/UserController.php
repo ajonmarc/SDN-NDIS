@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Controllers\Pdrrmo;
+namespace App\Http\Controllers\Head;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Pdrrmo\StoreUserRequest;
-use App\Http\Requests\Pdrrmo\UpdateUserRequest;
+use App\Http\Requests\Head\StoreUserRequest;
+use App\Http\Requests\Head\UpdateUserRequest;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
@@ -24,7 +24,7 @@ class UserController extends Controller
 
     public function index(): Response
     {
-        return Inertia::render('pdrrmo/users/Index');
+        return Inertia::render('head/users/Index');
     }
 
 
@@ -103,7 +103,7 @@ class UserController extends Controller
 
     public function create(): Response
     {
-        return Inertia::render('pdrrmo/users/Create', [
+        return Inertia::render('head/users/Create', [
             'roles' => Role::query()
                 ->select('id', 'name')
                 ->orderBy('name')
@@ -129,7 +129,7 @@ class UserController extends Controller
             'text' => 'User created successfully.',
         ]);
 
-        return redirect()->route('pdrrmo.users.index');
+        return redirect()->route('head.users.index');
     }
 
 
@@ -141,7 +141,7 @@ class UserController extends Controller
 
     public function edit(User $user): Response
     {
-        return Inertia::render('pdrrmo/users/Edit', [
+        return Inertia::render('head/users/Edit', [
             'user' => $user->only([
                 'id',
                 'name',
@@ -181,7 +181,7 @@ class UserController extends Controller
             'text' => 'User updated successfully.',
         ]);
 
-        return redirect()->route('pdrrmo.users.index');
+        return redirect()->route('head.users.index');
     }
 
 
@@ -200,7 +200,7 @@ class UserController extends Controller
                 'text' => 'This user is protected and cannot be deleted.',
             ]);
 
-            return redirect()->route('pdrrmo.users.index');
+            return redirect()->route('head.users.index');
         }
 
 
@@ -211,7 +211,7 @@ class UserController extends Controller
                 'text' => 'You cannot delete your own account.',
             ]);
 
-            return redirect()->route('pdrrmo.users.index');
+            return redirect()->route('head.users.index');
         }
 
 
@@ -222,6 +222,7 @@ class UserController extends Controller
             'text' => 'User deleted successfully.',
         ]);
 
-        return redirect()->route('pdrrmo.users.index');
+        return redirect()->route('head.users.index');
     }
 }
+

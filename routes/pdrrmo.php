@@ -1,8 +1,6 @@
 <?php
 
 use App\Http\Controllers\Pdrrmo\DashboardController;
-use App\Http\Controllers\Pdrrmo\UserController;
-use App\Http\Controllers\Pdrrmo\DocumentationController;
 use Illuminate\Support\Facades\Route;
 
 Route::middleware('role:PDRRMO')
@@ -20,22 +18,5 @@ Route::middleware('role:PDRRMO')
             DashboardController::class,
             'index',
         ])->name('dashboard');
-
-
-        /*
-        |--------------------------------------------------------------------------
-        | Users
-        |--------------------------------------------------------------------------
-        */
-
-        Route::get('users/data', [
-            UserController::class,
-            'getData',
-        ])->name('users.data');
-
-        Route::resource('users', UserController::class);
-
-        Route::get('documentation', [DocumentationController::class, 'index'])->name('documentation');  
-
 
     });

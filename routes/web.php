@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 Route::inertia('/', 'Welcome')->name('home');
 
 Route::middleware(['auth', 'verified'])->group(function () {
+    require __DIR__.'/head.php';
     require __DIR__.'/pdrrmo.php';
     require __DIR__.'/guest.php';
 });
