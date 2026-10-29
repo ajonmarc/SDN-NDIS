@@ -5,20 +5,23 @@
 |--------------------------------------------------------------------------
 */
 
-import { Head, Link, router } from '@inertiajs/vue3';
+import { Head, router } from '@inertiajs/vue3';
 import { ref } from 'vue';
 
 import SimpleTable from '@kikiloaw/simple-table';
 import { Pencil, Plus, Trash2 } from '@lucide/vue';
 
 import Heading from '@/components/Heading.vue';
+import FormDialog from '@/components/crud/FormDialog.vue';
+import Form from './Form.vue';
+
 import { Button } from '@/components/ui/button';
 import { getSwal } from '@/lib/swal';
 
 import {
     index,
-    create,
-    edit,
+    store,
+    update,
     destroy,
     data,
 } from '@/routes/head/users';
@@ -30,15 +33,22 @@ import {
 |--------------------------------------------------------------------------
 */
 
+interface RoleOption {
+    id: number;
+    name: string;
+}
+
 interface User {
     id: number;
     name: string;
     email: string;
-    role: {
-        id: number;
-        name: string;
-    } | null;
+    role_id: number | null;
+    role_name: string;
 }
+
+defineProps<{
+    roles: RoleOption[];
+}>();
 
 
 /*
@@ -47,10 +57,24 @@ interface User {
 |--------------------------------------------------------------------------
 */
 
-// SimpleTable reference
+/**
+ * User currently being created.
+ */
+const creating = ref(false);
+
+/**
+ * User currently being edited.
+ */
+const editingUser = ref<User | null>(null);
+
+/**
+ * SimpleTable reference.
+ */
 const tableRef = ref();
 
-// Prevent duplicate delete requests
+/**
+ * Prevent duplicate delete requests.
+ */
 const deleting = ref(false);
 
 
@@ -92,6 +116,68 @@ const columns = [
 
 /*
 |--------------------------------------------------------------------------
+| Create Actions
+|--------------------------------------------------------------------------
+*/
+
+/**
+ * Open create modal.
+ */
+const openCreate = () => {
+    creating.value = true;
+};
+
+/**
+ * Close create modal.
+ */
+const closeCreate = () => {
+    creating.value = false;
+};
+
+/**
+ * Called after successful creation.
+ */
+const handleCreateSuccess = () => {
+    creating.value = false;
+
+    // Refresh SimpleTable data
+    tableRef.value?.clearCache('current');
+};
+
+
+/*
+|--------------------------------------------------------------------------
+| Edit Actions
+|--------------------------------------------------------------------------
+*/
+
+/**
+ * Open edit modal.
+ */
+const openEdit = (user: User) => {
+    editingUser.value = user;
+};
+
+/**
+ * Close edit modal.
+ */
+const closeEdit = () => {
+    editingUser.value = null;
+};
+
+/**
+ * Called after successful update.
+ */
+const handleEditSuccess = () => {
+    editingUser.value = null;
+
+    // Refresh SimpleTable data
+    tableRef.value?.clearCache('current');
+};
+
+
+/*
+|--------------------------------------------------------------------------
 | Delete Actions
 |--------------------------------------------------------------------------
 */
@@ -128,12 +214,10 @@ const confirmDelete = async (user: User) => {
         preserveScroll: true,
 
         onSuccess: () => {
-            // Refresh SimpleTable data
             tableRef.value?.clearCache('current');
         },
 
         onFinish: () => {
-            // Allow another delete request
             deleting.value = false;
         },
     });
@@ -171,14 +255,14 @@ defineOptions({
 
         <div class="flex items-center justify-between">
 
-            <Heading title="Users" description="Manage users" />
+            <Heading
+                title="Users"
+                description="Manage users"
+            />
 
-            <!-- Create -->
-            <Button as-child>
-                <Link :href="create()">
-                    <Plus class="mr-2 h-4 w-4" />
-                    New User
-                </Link>
+            <Button @click="openCreate">
+                <Plus class="mr-2 h-4 w-4" />
+                New User
             </Button>
 
         </div>
@@ -190,7 +274,13 @@ defineOptions({
 
         <div class="mt-6">
 
-            <SimpleTable ref="tableRef" :fetch-url="data().url" :columns="columns" searchable enable-cache>
+            <SimpleTable
+                ref="tableRef"
+                :fetch-url="data().url"
+                :columns="columns"
+                searchable
+                enable-cache
+            >
 
                 <!-- ==================================================
                      Actions Column
@@ -199,16 +289,26 @@ defineOptions({
                 <template v-slot:[`cell-actions`]="{ row }">
 
                     <div class="inline-flex items-center gap-2">
+
                         <!-- Edit -->
-                        <Button as-child variant="outline" size="icon" title="Edit user">
-                            <Link :href="edit(row.id).url">
-                                <Pencil class="h-4 w-4" />
-                            </Link>
+                        <Button
+                            variant="outline"
+                            size="icon"
+                            title="Edit user"
+                            @click="openEdit(row)"
+                        >
+                            <Pencil class="h-4 w-4" />
                         </Button>
 
+
                         <!-- Delete -->
-                        <Button variant="destructive" size="icon" title="Delete user" :disabled="deleting"
-                            @click="confirmDelete(row)">
+                        <Button
+                            variant="destructive"
+                            size="icon"
+                            title="Delete user"
+                            :disabled="deleting"
+                            @click="confirmDelete(row)"
+                        >
                             <Trash2 class="h-4 w-4" />
                         </Button>
 
@@ -220,6 +320,78 @@ defineOptions({
 
         </div>
 
-    </div>
-</template>
 
+        <!-- ==========================================================
+             Create Dialog
+        =========================================================== -->
+
+        <FormDialog
+            :open="creating"
+            title="Create New User"
+            content-class="sm:max-w-2xl"
+            description="Add a new user to the system."
+            @update:open="
+                (value) => {
+                    if (!value) {
+                        closeCreate();
+                    }
+                }
+            "
+        >
+
+            <template #default="{ close }">
+
+                <Form
+                    :roles="roles"
+                    :submit-action="store()"
+                    submit-label="Create User"
+                    :on-cancel="close"
+                    @success="handleCreateSuccess"
+                />
+
+            </template>
+
+        </FormDialog>
+
+
+        <!-- ==========================================================
+             Edit Dialog
+        =========================================================== -->
+
+        <FormDialog
+            :open="!!editingUser"
+            title="Edit User"
+            content-class="sm:max-w-2xl"
+            :description="
+                editingUser
+                    ? `Update ${editingUser.name} details.`
+                    : undefined
+            "
+            @update:open="
+                (value) => {
+                    if (!value) {
+                        closeEdit();
+                    }
+                }
+            "
+        >
+
+            <template #default="{ close }">
+
+                <Form
+                    v-if="editingUser"
+                    :roles="roles"
+                    :user="editingUser"
+                    :submit-action="update(editingUser.id)"
+                    submit-label="Save Changes"
+                    :on-cancel="close"
+                    @success="handleEditSuccess"
+                />
+
+            </template>
+
+        </FormDialog>
+
+    </div>
+
+</template>

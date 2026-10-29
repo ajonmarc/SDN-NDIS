@@ -24,7 +24,12 @@ class UserController extends Controller
 
     public function index(): Response
     {
-        return Inertia::render('head/users/Index');
+        return Inertia::render('head/users/Index', [
+            'roles' => Role::query()
+                ->select('id', 'name')
+                ->orderBy('name')
+                ->get(),
+        ]);
     }
 
 
@@ -88,27 +93,11 @@ class UserController extends Controller
                         'id' => $user->id,
                         'name' => $user->name,
                         'email' => $user->email,
+                        'role_id' => $user->role_id,
                         'role_name' => $user->role?->name ?? 'No Role',
                     ];
                 })
         );
-    }
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Create
-    |--------------------------------------------------------------------------
-    */
-
-    public function create(): Response
-    {
-        return Inertia::render('head/users/Create', [
-            'roles' => Role::query()
-                ->select('id', 'name')
-                ->orderBy('name')
-                ->get(),
-        ]);
     }
 
 
@@ -130,30 +119,6 @@ class UserController extends Controller
         ]);
 
         return redirect()->route('head.users.index');
-    }
-
-
-    /*
-    |--------------------------------------------------------------------------
-    | Edit
-    |--------------------------------------------------------------------------
-    */
-
-    public function edit(User $user): Response
-    {
-        return Inertia::render('head/users/Edit', [
-            'user' => $user->only([
-                'id',
-                'name',
-                'email',
-                'role_id',
-            ]),
-
-            'roles' => Role::query()
-                ->select('id', 'name')
-                ->orderBy('name')
-                ->get(),
-        ]);
     }
 
 
@@ -225,4 +190,3 @@ class UserController extends Controller
         return redirect()->route('head.users.index');
     }
 }
-
