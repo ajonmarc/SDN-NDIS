@@ -16,6 +16,16 @@ class UserSeeder extends Seeder
         $GUESTRole = Role::firstOrCreate(['name' => 'GUEST']);
 
         User::updateOrCreate(
+            ['email' => 'head@gmail.com'],
+            [
+                'name' => 'Head',
+                'password' => Hash::make('password'),
+                'role_id' => $HEADRole->id,
+                'is_protected' => true,
+            ]
+        );
+
+        User::updateOrCreate(
             ['email' => 'ricoadolfo@gmail.com'],
             [
                 'name' => 'Rico Adolfo',
