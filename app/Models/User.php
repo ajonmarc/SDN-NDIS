@@ -2,14 +2,13 @@
 
 namespace App\Models;
 
-
-use App\Models\Role;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Support\Carbon;
@@ -23,6 +22,10 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
  * @property string $email
  * @property Carbon|null $email_verified_at
  * @property string $password
+ * @property string|null $full_address
+ * @property string|null $contact_number
+ * @property int|null $role_id
+ * @property bool $is_protected
  * @property string|null $two_factor_secret
  * @property string|null $two_factor_recovery_codes
  * @property Carbon|null $two_factor_confirmed_at
@@ -30,7 +33,7 @@ use Laravel\Fortify\TwoFactorAuthenticatable;
  * @property Carbon|null $created_at
  * @property Carbon|null $updated_at
  */
-#[Fillable(['name', 'email', 'password', 'role_id', 'is_protected'])]
+#[Fillable(['name', 'email', 'password', 'full_address', 'contact_number', 'role_id', 'is_protected'])]
 #[Hidden(['password', 'two_factor_secret', 'two_factor_recovery_codes', 'remember_token'])]
 class User extends Authenticatable implements PasskeyUser
 {
@@ -52,10 +55,28 @@ class User extends Authenticatable implements PasskeyUser
         ];
     }
 
-
     public function role(): BelongsTo
     {
         return $this->belongsTo(Role::class);
     }
 
+    public function disasters(): HasMany
+    {
+        return $this->hasMany(Disaster::class, 'created_by');
+    }
+
+    public function evacuationCenters(): HasMany
+    {
+        return $this->hasMany(EvacuationCenter::class, 'created_by');
+    }
+
+    public function disasterUpdates(): HasMany
+    {
+        return $this->hasMany(DisasterUpdate::class, 'created_by');
+    }
+
+    public function accessLogs(): HasMany
+    {
+        return $this->hasMany(AccessLog::class, 'user_id');
+    }
 }
