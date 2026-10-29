@@ -1,12 +1,15 @@
 <script setup lang="ts">
 import { Form, Head } from '@inertiajs/vue3';
+import { CheckCircle2, LogIn } from '@lucide/vue';
 import InputError from '@/components/InputError.vue';
 import PasswordInput from '@/components/PasswordInput.vue';
 import TextLink from '@/components/TextLink.vue';
+import { Alert, AlertDescription } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
 import { Checkbox } from '@/components/ui/checkbox';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
+import { Separator } from '@/components/ui/separator';
 import { Spinner } from '@/components/ui/spinner';
 import { register } from '@/routes';
 import { store } from '@/routes/login';
@@ -14,8 +17,8 @@ import { request } from '@/routes/password';
 
 defineOptions({
     layout: {
-        title: 'Log in to your account',
-        description: 'Enter your email and password below to log in',
+        title: 'Sign in to SDN-NDIS',
+        description: 'Enter your credentials to access your disaster management portal',
     },
 });
 
@@ -28,23 +31,20 @@ defineProps<{
 <template>
     <Head title="Log in" />
 
-    <div
-        v-if="status"
-        class="mb-4 text-center text-sm font-medium text-green-600"
-    >
-        {{ status }}
-    </div>
-
+    <Alert v-if="status" class="mb-5 border-emerald-500/40 bg-emerald-500/10 text-emerald-700 dark:text-emerald-300">
+        <CheckCircle2 class="h-4 w-4" />
+        <AlertDescription>{{ status }}</AlertDescription>
+    </Alert>
 
     <Form
         v-bind="store.form()"
         :reset-on-success="['password']"
         v-slot="{ errors, processing }"
-        class="flex flex-col gap-6"
+        class="flex flex-col gap-5"
     >
-        <div class="grid gap-6">
+        <div class="grid gap-5">
             <div class="grid gap-2">
-                <Label for="email">Email address</Label>
+                <Label for="email">Email Address</Label>
                 <Input
                     id="email"
                     type="email"
@@ -53,7 +53,7 @@ defineProps<{
                     autofocus
                     :tabindex="1"
                     autocomplete="email"
-                    placeholder="email@example.com"
+                    placeholder="name@example.com"
                 />
                 <InputError :message="errors.email" />
             </div>
@@ -64,10 +64,10 @@ defineProps<{
                     <TextLink
                         v-if="canResetPassword"
                         :href="request()"
-                        class="text-sm"
+                        class="text-xs"
                         :tabindex="5"
                     >
-                        Forgot your password?
+                        Forgot password?
                     </TextLink>
                 </div>
                 <PasswordInput
@@ -76,33 +76,39 @@ defineProps<{
                     required
                     :tabindex="2"
                     autocomplete="current-password"
-                    placeholder="Password"
+                    placeholder="Enter your password"
                 />
                 <InputError :message="errors.password" />
             </div>
 
             <div class="flex items-center justify-between">
-                <Label for="remember" class="flex items-center space-x-3">
+                <Label for="remember" class="flex items-center space-x-2.5 text-sm font-normal cursor-pointer">
                     <Checkbox id="remember" name="remember" :tabindex="3" />
-                    <span>Remember me</span>
+                    <span>Keep me signed in</span>
                 </Label>
             </div>
 
             <Button
                 type="submit"
-                class="mt-4 w-full"
+                class="mt-1 w-full"
+                size="lg"
                 :tabindex="4"
                 :disabled="processing"
                 data-test="login-button"
             >
                 <Spinner v-if="processing" />
-                Log in
+                <LogIn v-else class="mr-2 h-4 w-4" />
+                Sign In
             </Button>
         </div>
 
+        <Separator />
+
         <div class="text-center text-sm text-muted-foreground">
-            Don't have an account?
-            <TextLink :href="register()" :tabindex="5">Sign up</TextLink>
+            Don't have an account yet?
+            <TextLink :href="register()" :tabindex="5" class="font-medium">
+                Create a Guest Account
+            </TextLink>
         </div>
     </Form>
 </template>
