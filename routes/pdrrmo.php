@@ -31,10 +31,13 @@ Route::middleware('role:PDRRMO')
         |--------------------------------------------------------------------------
         */
 
-        Route::get('municipalities', [
+        Route::get('municipalities/data', [
             MunicipalityController::class,
-            'index',
-        ])->name('municipalities.index');
+            'getData',
+        ])->name('municipalities.data');
+
+        Route::resource('municipalities', MunicipalityController::class)
+            ->except(['create', 'show', 'edit']);
 
         /*
         |--------------------------------------------------------------------------
