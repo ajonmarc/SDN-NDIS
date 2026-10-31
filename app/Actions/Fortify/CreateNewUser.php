@@ -31,6 +31,8 @@ class CreateNewUser implements CreatesNewUsers
             'name' => $input['name'],
             'email' => $input['email'],
             'password' => $input['password'],
+            'contact_number' => $input['contact_number'] ?? null,
+            'full_address' => $input['full_address'] ?? null,
             'role_id' => $guestRole->id,
         ]);
     }

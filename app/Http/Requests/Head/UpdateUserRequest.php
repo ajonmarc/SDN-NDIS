@@ -20,6 +20,8 @@ class UpdateUserRequest extends FormRequest
         return [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', Rule::unique('users', 'email')->ignore($userId)],
+            'contact_number' => ['nullable', 'string', 'max:20'],
+            'full_address' => ['nullable', 'string', 'max:1000'],
             'password' => ['nullable', 'string', Password::defaults(), 'confirmed'],
             'role_id' => ['required', 'integer', Rule::exists('roles', 'id')->whereNot('name', 'HEAD')],
         ];

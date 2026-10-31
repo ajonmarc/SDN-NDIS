@@ -98,6 +98,8 @@ class UserController extends Controller
                         'id' => $user->id,
                         'name' => $user->name,
                         'email' => $user->email,
+                        'contact_number' => $user->contact_number,
+                        'full_address' => $user->full_address,
                         'role_id' => $user->role_id,
                         'role_name' => $user->role?->name ?? 'No Role',
                     ];

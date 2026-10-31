@@ -42,6 +42,8 @@ interface User {
     id: number;
     name: string;
     email: string;
+    contact_number: string | null;
+    full_address: string | null;
     role_id: number | null;
     role_name: string;
 }
@@ -100,6 +102,11 @@ const columns = [
         key: 'email',
         label: 'Email',
         sortable: true,
+    },
+    {
+        key: 'contact_number',
+        label: 'Contact No.',
+        sortable: false,
     },
     {
         key: 'role_name',

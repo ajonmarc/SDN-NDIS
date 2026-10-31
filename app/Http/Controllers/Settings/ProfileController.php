@@ -54,6 +54,15 @@ class ProfileController extends Controller
     {
         $user = $request->user();
 
+        if ($user->is_protected || $user->role?->name === 'HEAD') {
+            Swal::error([
+                'title' => 'Action Denied',
+                'text' => 'This protected administrator account cannot be deleted.',
+            ]);
+
+            return to_route('profile.edit');
+        }
+
         Auth::logout();
 
         $user->delete();

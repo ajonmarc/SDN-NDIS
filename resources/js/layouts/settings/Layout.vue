@@ -9,8 +9,8 @@ import Heading from '@/components/Heading.vue';
             description="Manage your profile and account settings"
         />
 
-        <div class="mt-6 max-w-2xl">
-            <section class="space-y-12">
+        <div class="mt-6 max-w-4xl">
+            <section class="space-y-10">
                 <slot />
             </section>
         </div>

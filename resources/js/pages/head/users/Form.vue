@@ -12,11 +12,19 @@ import {
     SelectValue,
 } from '@/components/ui/select';
 import { Spinner } from '@/components/ui/spinner';
+import { Textarea } from '@/components/ui/textarea';
 import { ref, watch } from 'vue';
 import type { AcceptableValue } from 'reka-ui';
 
 type RoleOption = { id: number; name: string };
-type UserFormValues = { id?: number; name: string; email: string; role_id: number | string | null };
+type UserFormValues = {
+    id?: number;
+    name: string;
+    email: string;
+    contact_number?: string | null;
+    full_address?: string | null;
+    role_id: number | string | null;
+};
 
 const props = defineProps<{
     roles: RoleOption[];
@@ -65,6 +73,20 @@ const handleRoleChange = (value: AcceptableValue) => {
                 <Input id="email" type="email" name="email" :default-value="user?.email" required autocomplete="email"
                     placeholder="email@example.com" />
                 <InputError :message="errors.email" />
+            </div>
+
+            <div class="grid gap-2">
+                <Label for="contact_number">Contact number</Label>
+                <Input id="contact_number" type="tel" name="contact_number" :default-value="user?.contact_number ?? ''"
+                    autocomplete="tel" maxlength="20" placeholder="e.g. 0917 123 4567" />
+                <InputError :message="errors.contact_number" />
+            </div>
+
+            <div class="grid gap-2">
+                <Label for="full_address">Full address</Label>
+                <Textarea id="full_address" name="full_address" rows="2" :default-value="user?.full_address ?? ''"
+                    placeholder="e.g. Purok 1, Brgy. Washington, Surigao City" />
+                <InputError :message="errors.full_address" />
             </div>
 
             <div class="grid gap-2">
