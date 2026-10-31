@@ -32,6 +32,30 @@ type DisasterFormValues = {
     status: string;
 };
 
+const MUNICIPALITY_COORDS: Record<string, [string, string]> = {
+    'Surigao City': ['9.78440000', '125.49500000'],
+    'Alegria': ['9.46860000', '125.57690000'],
+    'Bacuag': ['9.60830000', '125.63780000'],
+    'Burgos': ['10.02110000', '126.07360000'],
+    'Claver': ['9.57250000', '125.73310000'],
+    'Dapa': ['9.75940000', '126.05310000'],
+    'Del Carmen': ['9.86940000', '125.97080000'],
+    'General Luna': ['9.78250000', '126.15580000'],
+    'Gigaquit': ['9.59580000', '125.69750000'],
+    'Mainit': ['9.53720000', '125.52310000'],
+    'Malimono': ['9.61940000', '125.40280000'],
+    'Pilar': ['9.86500000', '126.09890000'],
+    'Placer': ['9.65420000', '125.60250000'],
+    'San Benito': ['9.95750000', '126.00560000'],
+    'San Francisco (Anao-Aon)': ['9.71360000', '125.43060000'],
+    'San Isidro': ['9.93670000', '126.08580000'],
+    'Santa Monica (Sapao)': ['10.01970000', '126.03810000'],
+    'Sison': ['9.66170000', '125.52940000'],
+    'Socorro': ['9.62140000', '125.96670000'],
+    'Tagana-an': ['9.69720000', '125.58190000'],
+    'Tubod': ['9.56670000', '125.56670000'],
+};
+
 const props = defineProps<{
     municipalities: MunicipalityOption[];
     disasterTypes: DisasterTypeOption[];
@@ -59,6 +83,16 @@ const selectedSeverity = ref<string | undefined>(
 const selectedStatus = ref<string | undefined>(
     props.disaster?.status || 'Active'
 );
+const latitudeValue = ref<string>(
+    props.disaster?.latitude !== null && props.disaster?.latitude !== undefined
+        ? String(props.disaster.latitude)
+        : ''
+);
+const longitudeValue = ref<string>(
+    props.disaster?.longitude !== null && props.disaster?.longitude !== undefined
+        ? String(props.disaster.longitude)
+        : ''
+);
 
 watch(
     () => props.disaster,
@@ -71,6 +105,14 @@ watch(
             : undefined;
         selectedSeverity.value = newDisaster?.severity || 'Moderate';
         selectedStatus.value = newDisaster?.status || 'Active';
+        latitudeValue.value =
+            newDisaster?.latitude !== null && newDisaster?.latitude !== undefined
+                ? String(newDisaster.latitude)
+                : '';
+        longitudeValue.value =
+            newDisaster?.longitude !== null && newDisaster?.longitude !== undefined
+                ? String(newDisaster.longitude)
+                : '';
     },
     { immediate: true }
 );
@@ -80,6 +122,20 @@ const toStringOrUndefined = (value: AcceptableValue): string | undefined => {
         return undefined;
     }
     return String(value);
+};
+
+const handleMunicipalitySelect = (value: AcceptableValue) => {
+    const idStr = toStringOrUndefined(value);
+    selectedMunicipalityId.value = idStr;
+
+    if (idStr) {
+        const muni = props.municipalities.find((m) => String(m.id) === idStr);
+        if (muni && MUNICIPALITY_COORDS[muni.municipality_name]) {
+            const [lat, lng] = MUNICIPALITY_COORDS[muni.municipality_name];
+            latitudeValue.value = lat;
+            longitudeValue.value = lng;
+        }
+    }
 };
 </script>
 
@@ -115,9 +171,7 @@ const toStringOrUndefined = (value: AcceptableValue): string | undefined => {
                 />
                 <Select
                     :model-value="selectedMunicipalityId"
-                    @update:model-value="
-                        (v) => (selectedMunicipalityId = toStringOrUndefined(v))
-                    "
+                    @update:model-value="handleMunicipalitySelect"
                 >
                     <SelectTrigger id="municipality_id" class="w-full">
                         <SelectValue placeholder="Select municipality" />
@@ -234,14 +288,14 @@ const toStringOrUndefined = (value: AcceptableValue): string | undefined => {
             <div class="grid gap-2">
                 <Label for="latitude">
                     Latitude
-                    <span class="text-muted-foreground">(optional)</span>
+                    <span class="text-muted-foreground">(auto-filled by municipality)</span>
                 </Label>
                 <Input
                     id="latitude"
+                    v-model="latitudeValue"
                     type="number"
                     step="any"
                     name="latitude"
-                    :default-value="disaster?.latitude ?? undefined"
                     placeholder="e.g. 9.78440000"
                 />
                 <InputError :message="errors.latitude" />
@@ -251,14 +305,14 @@ const toStringOrUndefined = (value: AcceptableValue): string | undefined => {
             <div class="grid gap-2">
                 <Label for="longitude">
                     Longitude
-                    <span class="text-muted-foreground">(optional)</span>
+                    <span class="text-muted-foreground">(auto-filled by municipality)</span>
                 </Label>
                 <Input
                     id="longitude"
+                    v-model="longitudeValue"
                     type="number"
                     step="any"
                     name="longitude"
-                    :default-value="disaster?.longitude ?? undefined"
                     placeholder="e.g. 125.49500000"
                 />
                 <InputError :message="errors.longitude" />
@@ -308,4 +362,3 @@ const toStringOrUndefined = (value: AcceptableValue): string | undefined => {
         </div>
     </Form>
 </template>
-

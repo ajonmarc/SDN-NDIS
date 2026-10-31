@@ -4,7 +4,7 @@ import {
     AlertTriangle,
     ArrowRight,
     Building2,
-    Globe,
+    Info,
     MapPin,
     Megaphone,
     Radio,
@@ -25,13 +25,28 @@ import { useRole } from '@/composables/useRole';
 import { login, register } from '@/routes';
 
 interface WelcomeStats {
+    total_disasters: number;
     active_disasters: number;
+    total_centers: number;
     open_centers: number;
+    total_occupancy: number;
+    total_capacity: number;
     total_municipalities: number;
     total_updates: number;
 }
 
-interface RecentUpdateItem {
+interface DisasterItem {
+    id: number;
+    title: string;
+    description: string | null;
+    municipality_name: string;
+    disaster_type_name: string;
+    severity: string;
+    status: string;
+    occurred_at: string;
+}
+
+interface UpdateItem {
     id: number;
     disaster_title: string;
     municipality_name: string;
@@ -39,19 +54,38 @@ interface RecentUpdateItem {
     published_at: string;
 }
 
+interface EvacuationCenterItem {
+    id: number;
+    center_name: string;
+    address: string;
+    municipality_name: string;
+    image: string | null;
+    capacity: number;
+    current_occupancy: number;
+    status: string;
+}
+
 withDefaults(
     defineProps<{
         stats?: WelcomeStats;
-        recentUpdates?: RecentUpdateItem[];
+        disasters?: DisasterItem[];
+        updates?: UpdateItem[];
+        evacuationCenters?: EvacuationCenterItem[];
     }>(),
     {
         stats: () => ({
+            total_disasters: 0,
             active_disasters: 0,
+            total_centers: 0,
             open_centers: 0,
-            total_municipalities: 21,
+            total_occupancy: 0,
+            total_capacity: 0,
+            total_municipalities: 0,
             total_updates: 0,
         }),
-        recentUpdates: () => [],
+        disasters: () => [],
+        updates: () => [],
+        evacuationCenters: () => [],
     }
 );
 
@@ -64,32 +98,43 @@ const homeHref = computed(() => {
     return '/';
 });
 
-const features = [
-    {
-        title: 'Interactive GIS Disaster Map',
-        description:
-            'Visualize active disaster coordinates and evacuation center markers across Mainland Surigao del Norte and Siargao & Bucas Grande Islands.',
-        icon: Globe,
-    },
-    {
-        title: 'Evacuation Center Monitoring',
-        description:
-            'Check real-time shelter capacities, current occupancy counts, facility photos, and operational statuses before evacuating.',
-        icon: Building2,
-    },
-    {
-        title: 'Official PDRRMO Advisories',
-        description:
-            'Receive verified situation updates, severity alerts, and emergency instructions directly from provincial disaster authorities.',
-        icon: Megaphone,
-    },
-    {
-        title: 'Province-Wide LGU Coverage',
-        description:
-            'Unified tracking across Surigao City and all 20 municipalities of Surigao del Norte for rapid disaster response coordination.',
-        icon: MapPin,
-    },
-];
+const severityVariant = (severity: string) => {
+    switch (severity) {
+        case 'Critical':
+        case 'High':
+            return 'destructive' as const;
+        case 'Moderate':
+            return 'default' as const;
+        default:
+            return 'secondary' as const;
+    }
+};
+
+const disasterStatusVariant = (status: string) => {
+    switch (status) {
+        case 'Active':
+            return 'destructive' as const;
+        case 'Monitoring':
+            return 'default' as const;
+        case 'Contained':
+            return 'secondary' as const;
+        default:
+            return 'outline' as const;
+    }
+};
+
+const centerStatusVariant = (status: string) => {
+    switch (status) {
+        case 'Open':
+            return 'default' as const;
+        case 'Full':
+            return 'destructive' as const;
+        case 'Maintenance':
+            return 'secondary' as const;
+        default:
+            return 'outline' as const;
+    }
+};
 </script>
 
 <template>
@@ -140,7 +185,7 @@ const features = [
         </header>
 
         <!-- ==========================================================
-             Hero Section
+             Hero Section & Live Provincial Telemetry
         =========================================================== -->
         <section class="relative overflow-hidden border-b bg-gradient-to-b from-secondary/95 via-secondary to-[#021824] text-white">
             <div
@@ -190,7 +235,7 @@ const features = [
                         </div>
                     </div>
 
-                    <!-- Live Telemetry Card Panel -->
+                    <!-- Live Telemetry Card Panel (100% Real Database Stats) -->
                     <div class="lg:col-span-5">
                         <div class="rounded-2xl border border-white/15 bg-white/10 p-6 shadow-2xl backdrop-blur-md">
                             <div class="mb-4 flex items-center justify-between border-b border-white/15 pb-4">
@@ -201,39 +246,39 @@ const features = [
                                             Live Provincial Telemetry
                                         </h2>
                                         <p class="text-xs text-cyan-200">
-                                            Real-time SDN-NDIS operational snapshot
+                                            Real-time SDN-NDIS database summary
                                         </p>
                                     </div>
                                 </div>
                                 <Badge class="bg-emerald-500/20 text-emerald-300 border-emerald-400/30">
-                                    Online
+                                    Live Data
                                 </Badge>
                             </div>
 
                             <div class="grid grid-cols-2 gap-3.5">
                                 <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
                                     <div class="flex items-center justify-between text-xs text-slate-300">
-                                        <span>Active Disasters</span>
+                                        <span>Recorded Disasters</span>
                                         <AlertTriangle class="h-4 w-4 text-[#f37f20]" />
                                     </div>
                                     <p class="mt-2 text-2xl font-bold text-white">
-                                        {{ stats.active_disasters }}
+                                        {{ stats.total_disasters.toLocaleString() }}
                                     </p>
                                     <p class="mt-0.5 text-[11px] text-slate-300">
-                                        Monitored incidents
+                                        {{ stats.active_disasters.toLocaleString() }} active / monitoring
                                     </p>
                                 </div>
 
                                 <div class="rounded-xl border border-white/10 bg-slate-950/40 p-4">
                                     <div class="flex items-center justify-between text-xs text-slate-300">
-                                        <span>Open Shelters</span>
+                                        <span>Evacuation Centers</span>
                                         <Building2 class="h-4 w-4 text-[#38e0f5]" />
                                     </div>
                                     <p class="mt-2 text-2xl font-bold text-white">
-                                        {{ stats.open_centers }}
+                                        {{ stats.total_centers.toLocaleString() }}
                                     </p>
                                     <p class="mt-0.5 text-[11px] text-slate-300">
-                                        Ready evacuation centers
+                                        {{ stats.open_centers.toLocaleString() }} open ({{ stats.total_occupancy.toLocaleString() }}/{{ stats.total_capacity.toLocaleString() }})
                                     </p>
                                 </div>
 
@@ -243,7 +288,7 @@ const features = [
                                         <MapPin class="h-4 w-4 text-emerald-400" />
                                     </div>
                                     <p class="mt-2 text-2xl font-bold text-white">
-                                        {{ stats.total_municipalities }}
+                                        {{ stats.total_municipalities.toLocaleString() }}
                                     </p>
                                     <p class="mt-0.5 text-[11px] text-slate-300">
                                         Surigao del Norte LGUs
@@ -256,7 +301,7 @@ const features = [
                                         <Megaphone class="h-4 w-4 text-amber-300" />
                                     </div>
                                     <p class="mt-2 text-2xl font-bold text-white">
-                                        {{ stats.total_updates }}
+                                        {{ stats.total_updates.toLocaleString() }}
                                     </p>
                                     <p class="mt-0.5 text-[11px] text-slate-300">
                                         Published updates
@@ -270,58 +315,90 @@ const features = [
         </section>
 
         <!-- ==========================================================
-             Core Capabilities Section
+             Real Database Feeds: Disasters, Advisories & Evacuation Centers
         =========================================================== -->
-        <section class="mx-auto w-full max-w-7xl px-4 py-14 sm:px-6 lg:px-8">
-            <div class="mb-10 flex flex-col items-start justify-between gap-4 md:flex-row md:items-end">
+        <div class="mx-auto w-full max-w-7xl flex-1 space-y-12 px-4 py-12 sm:px-6 lg:px-8">
+            <!-- 1. Recorded Disasters from Database -->
+            <section class="space-y-5">
                 <div>
-                    <Badge variant="outline" class="mb-2">System Capabilities</Badge>
-                    <h2 class="text-2xl font-bold tracking-tight sm:text-3xl">
-                        Built for Rapid Disaster Preparedness &amp; Response
+                    <Badge variant="outline" class="mb-2">Disaster Monitoring</Badge>
+                    <h2 class="text-2xl font-bold tracking-tight">
+                        Latest Recorded Disasters
                     </h2>
+                    <p class="text-sm text-muted-foreground">
+                        Active and recent disaster events recorded in Surigao del Norte
+                    </p>
                 </div>
-                <p class="max-w-xl text-sm text-muted-foreground">
-                    Connecting PDRRMO personnel and citizens with accurate geographic data, shelter availability, and verified emergency advisories.
-                </p>
-            </div>
 
-            <div class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
-                <Card
-                    v-for="feature in features"
-                    :key="feature.title"
-                    class="transition-shadow hover:shadow-md"
+                <div
+                    v-if="disasters.length > 0"
+                    class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
                 >
-                    <CardHeader class="pb-3">
-                        <div class="mb-3 flex size-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                            <component :is="feature.icon" class="h-5 w-5" />
-                        </div>
-                        <CardTitle class="text-base">{{ feature.title }}</CardTitle>
-                    </CardHeader>
-                    <CardContent>
-                        <CardDescription class="text-sm leading-relaxed">
-                            {{ feature.description }}
-                        </CardDescription>
-                    </CardContent>
-                </Card>
-            </div>
-        </section>
-
-        <!-- ==========================================================
-             Latest Public Advisories Section
-        =========================================================== -->
-        <section v-if="recentUpdates.length > 0" class="border-t bg-muted/40 py-14">
-            <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-                <div class="mb-8 flex items-center justify-between">
-                    <div>
-                        <Badge variant="secondary" class="mb-2">Latest Bulletins</Badge>
-                        <h2 class="text-2xl font-bold tracking-tight">
-                            Recent Disaster Updates &amp; Advisories
-                        </h2>
-                    </div>
+                    <Card
+                        v-for="disaster in disasters"
+                        :key="disaster.id"
+                        class="transition-shadow hover:shadow-md"
+                    >
+                        <CardHeader class="pb-2">
+                            <div class="flex items-center justify-between gap-2">
+                                <Badge :variant="severityVariant(disaster.severity)">
+                                    {{ disaster.severity }}
+                                </Badge>
+                                <Badge :variant="disasterStatusVariant(disaster.status)">
+                                    {{ disaster.status }}
+                                </Badge>
+                            </div>
+                            <CardTitle class="mt-2 text-base">
+                                {{ disaster.title }}
+                            </CardTitle>
+                            <CardDescription>
+                                {{ disaster.disaster_type_name }} • {{ disaster.municipality_name }}
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent class="space-y-2">
+                            <p class="line-clamp-2 text-sm text-muted-foreground">
+                                {{ disaster.description || 'No additional description provided.' }}
+                            </p>
+                            <p class="text-xs text-muted-foreground">
+                                Occurred: {{ disaster.occurred_at }}
+                            </p>
+                        </CardContent>
+                    </Card>
                 </div>
 
-                <div class="grid grid-cols-1 gap-6 md:grid-cols-3">
-                    <Card v-for="update in recentUpdates" :key="update.id">
+                <div
+                    v-else
+                    class="flex flex-col items-center justify-center gap-2 rounded-xl border border-dashed bg-card py-10 text-center"
+                >
+                    <Info class="h-7 w-7 text-muted-foreground" />
+                    <p class="text-sm font-medium">No disasters recorded yet</p>
+                    <p class="text-xs text-muted-foreground">
+                        Recorded disaster incidents will automatically appear here.
+                    </p>
+                </div>
+            </section>
+
+            <!-- 2. Recent Disaster Updates & Advisories from Database -->
+            <section class="space-y-5">
+                <div>
+                    <Badge variant="secondary" class="mb-2">Latest Bulletins</Badge>
+                    <h2 class="text-2xl font-bold tracking-tight">
+                        Recent Disaster Updates &amp; Advisories
+                    </h2>
+                    <p class="text-sm text-muted-foreground">
+                        Official situation reports and emergency advisories published by PDRRMO
+                    </p>
+                </div>
+
+                <div
+                    v-if="updates.length > 0"
+                    class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+                >
+                    <Card
+                        v-for="update in updates"
+                        :key="update.id"
+                        class="transition-shadow hover:shadow-md"
+                    >
                         <CardHeader class="pb-2">
                             <div class="flex items-center justify-between gap-2">
                                 <Badge variant="outline">{{ update.municipality_name }}</Badge>
@@ -340,8 +417,85 @@ const features = [
                         </CardContent>
                     </Card>
                 </div>
-            </div>
-        </section>
+
+                <div
+                    v-else
+                    class="flex flex-col items-center justify-center gap-2 rounded-xl border border-dashed bg-card py-10 text-center"
+                >
+                    <Info class="h-7 w-7 text-muted-foreground" />
+                    <p class="text-sm font-medium">No advisories published yet</p>
+                    <p class="text-xs text-muted-foreground">
+                        Official PDRRMO updates will be displayed here as soon as they are published.
+                    </p>
+                </div>
+            </section>
+
+            <!-- 3. Evacuation Centers from Database -->
+            <section class="space-y-5">
+                <div>
+                    <Badge variant="outline" class="mb-2">Evacuation Shelters</Badge>
+                    <h2 class="text-2xl font-bold tracking-tight">
+                        Evacuation Centers
+                    </h2>
+                    <p class="text-sm text-muted-foreground">
+                        Available evacuation centers, current occupancy, and shelter capacities
+                    </p>
+                </div>
+
+                <div
+                    v-if="evacuationCenters.length > 0"
+                    class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+                >
+                    <Card
+                        v-for="center in evacuationCenters"
+                        :key="center.id"
+                        class="overflow-hidden transition-shadow hover:shadow-md"
+                    >
+                        <img
+                            v-if="center.image"
+                            :src="center.image"
+                            :alt="center.center_name"
+                            class="h-40 w-full border-b object-cover"
+                        />
+                        <CardHeader class="pb-2">
+                            <div class="flex items-center justify-between gap-2">
+                                <Badge variant="secondary">
+                                    {{ center.municipality_name }}
+                                </Badge>
+                                <Badge :variant="centerStatusVariant(center.status)">
+                                    {{ center.status }}
+                                </Badge>
+                            </div>
+                            <CardTitle class="mt-2 text-base">
+                                {{ center.center_name }}
+                            </CardTitle>
+                            <CardDescription class="line-clamp-1">
+                                {{ center.address }}
+                            </CardDescription>
+                        </CardHeader>
+                        <CardContent>
+                            <p class="text-xs font-medium text-muted-foreground">
+                                Occupancy:
+                                <span class="text-foreground">
+                                    {{ center.current_occupancy.toLocaleString() }} / {{ center.capacity.toLocaleString() }} persons
+                                </span>
+                            </p>
+                        </CardContent>
+                    </Card>
+                </div>
+
+                <div
+                    v-else
+                    class="flex flex-col items-center justify-center gap-2 rounded-xl border border-dashed bg-card py-10 text-center"
+                >
+                    <Info class="h-7 w-7 text-muted-foreground" />
+                    <p class="text-sm font-medium">No evacuation centers listed yet</p>
+                    <p class="text-xs text-muted-foreground">
+                        Designated evacuation shelters and their capacities will appear here once added.
+                    </p>
+                </div>
+            </section>
+        </div>
 
         <!-- ==========================================================
              Footer

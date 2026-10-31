@@ -10,6 +10,7 @@ import Breadcrumbs from '@/components/Breadcrumbs.vue';
 
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
+import AppearanceTabs from '@/components/AppearanceTabs.vue'; 
 
 import {
     DropdownMenu,
@@ -132,10 +133,7 @@ const activeItemStyles =
                 <!-- Right Side -->
                 <div class="ml-auto flex items-center space-x-2">
 
-                    <!-- Search -->
-                    <Button variant="ghost" size="icon" class="group h-9 w-9 cursor-pointer">
-                        <Search class="size-5 opacity-80 group-hover:opacity-100" />
-                    </Button>
+               <AppearanceTabs />
 
                     <!-- User Menu -->
                     <DropdownMenu>
