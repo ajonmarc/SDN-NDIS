@@ -1,0 +1,103 @@
+<svg width="1440" height="1024" viewBox="0 0 1440 1024" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="heroGrad" x1="0" y1="72" x2="1440" y2="390" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#021824"/>
+      <stop offset="55%" stop-color="#033956"/>
+      <stop offset="100%" stop-color="#007687"/>
+    </linearGradient>
+  </defs>
+
+  <rect id="Welcome-Page-Bg" width="1440" height="1024" fill="#F4F8FA"/>
+
+  <!-- Top Navigation Header -->
+  <g id="Top-Navigation-Header">
+    <rect width="1440" height="72" fill="#FFFFFF" stroke="#C2D6E0"/>
+    <g id="Brand-Logo" transform="translate(64, 14)">
+      <circle cx="22" cy="22" r="22" fill="#033956" stroke="#008B9E" stroke-width="2"/>
+      <path d="M22 11L30 15V22C30 27 26.5 31.5 22 33C17.5 31.5 14 27 14 22V15L22 11Z" fill="#F37F20"/>
+      <text x="56" y="20" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="17" font-weight="800">SDN-NDIS</text>
+      <text x="56" y="36" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="500">Surigao del Norte Natural Disaster Information System</text>
+    </g>
+
+    <g id="Header-Auth-Buttons" transform="translate(1150, 18)">
+      <rect x="0" y="0" width="96" height="36" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+      <text x="48" y="23" text-anchor="middle" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13" font-weight="600">Sign In</text>
+
+      <rect x="108" y="0" width="118" height="36" rx="6" fill="#007687"/>
+      <text x="167" y="23" text-anchor="middle" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="13" font-weight="700">Register</text>
+    </g>
+  </g>
+
+  <!-- Hero Banner -->
+  <g id="Hero-Banner-Section" transform="translate(0, 72)">
+    <rect width="1440" height="296" fill="url(#heroGrad)"/>
+
+    <g id="Hero-Left-Copy" transform="translate(64, 44)">
+      <rect width="236" height="28" rx="14" fill="#FFFFFF" fill-opacity="0.12" stroke="#38E0F5" stroke-opacity="0.4"/>
+      <circle cx="16" cy="14" r="4" fill="#F37F20"/>
+      <text x="28" y="18" fill="#CFFAFE" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="700">PROVINCE OF SURIGAO DEL NORTE</text>
+
+      <text x="0" y="72" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="36" font-weight="800">Natural Disaster Monitoring &amp;</text>
+      <text x="0" y="114" fill="#38E0F5" font-family="Oxanium, Inter, sans-serif" font-size="36" font-weight="800">Evacuation Information System</text>
+      <text x="0" y="150" fill="#E2E8F0" font-family="Oxanium, Inter, sans-serif" font-size="14" font-weight="400">Real-time disaster alerts, verified PDRRMO advisories, and evacuation center capacity across 21 municipalities.</text>
+
+      <g id="Hero-CTA-Buttons" transform="translate(0, 174)">
+        <rect width="190" height="42" rx="6" fill="#F37F20"/>
+        <text x="95" y="26" text-anchor="middle" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="13" font-weight="700">Open Live GIS Map</text>
+
+        <rect x="204" y="0" width="190" height="42" rx="6" fill="#FFFFFF" fill-opacity="0.12" stroke="#FFFFFF" stroke-opacity="0.3"/>
+        <text x="299" y="26" text-anchor="middle" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="13" font-weight="600">View Evacuation Centers</text>
+      </g>
+    </g>
+
+    <g id="Hero-Live-KPI-Cards" transform="translate(820, 44)">
+      <rect x="0" y="0" width="268" height="96" rx="10" fill="#FFFFFF" fill-opacity="0.1" stroke="#FFFFFF" stroke-opacity="0.2"/>
+      <text x="20" y="30" fill="#CFFAFE" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">ACTIVE DISASTERS</text>
+      <text x="20" y="68" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="32" font-weight="800">1</text>
+
+      <rect x="288" y="0" width="268" height="96" rx="10" fill="#FFFFFF" fill-opacity="0.1" stroke="#FFFFFF" stroke-opacity="0.2"/>
+      <text x="308" y="30" fill="#CFFAFE" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">AVAILABLE SHELTERS</text>
+      <text x="308" y="68" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="32" font-weight="800">4</text>
+
+      <rect x="0" y="114" width="268" height="96" rx="10" fill="#FFFFFF" fill-opacity="0.1" stroke="#FFFFFF" stroke-opacity="0.2"/>
+      <text x="20" y="144" fill="#CFFAFE" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">AVAILABLE SLOTS</text>
+      <text x="20" y="182" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="32" font-weight="800">1,015</text>
+
+      <rect x="288" y="114" width="268" height="96" rx="10" fill="#FFFFFF" fill-opacity="0.1" stroke="#FFFFFF" stroke-opacity="0.2"/>
+      <text x="308" y="144" fill="#CFFAFE" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">PUBLISHED ADVISORIES</text>
+      <text x="308" y="182" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="32" font-weight="800">6</text>
+    </g>
+  </g>
+
+  <!-- Main Content Grid -->
+  <g id="Main-Content-Grid" transform="translate(64, 404)">
+    <g id="Left-Column-Disasters">
+      <rect width="640" height="560" rx="10" fill="#FFFFFF" stroke="#C2D6E0"/>
+      <text x="24" y="36" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="18" font-weight="700">Latest Reported Disasters</text>
+      <line x1="0" y1="64" x2="640" y2="64" stroke="#C2D6E0"/>
+
+      <g transform="translate(24, 86)">
+        <rect width="592" height="132" rx="8" fill="#F4F8FA" stroke="#C2D6E0"/>
+        <rect x="16" y="16" width="76" height="22" rx="4" fill="#DC2626" fill-opacity="0.12"/>
+        <text x="54" y="31" text-anchor="middle" fill="#DC2626" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="700">CRITICAL</text>
+        <text x="16" y="64" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="16" font-weight="700">Tropical Storm Coastal Surge &amp; Heavy Rainfall</text>
+        <text x="16" y="88" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="12">Pre-emptive evacuation ongoing for coastal barangays in Surigao City.</text>
+      </g>
+    </g>
+
+    <g id="Right-Column-Evacuation-Centers" transform="translate(672, 0)">
+      <rect width="640" height="560" rx="10" fill="#FFFFFF" stroke="#C2D6E0"/>
+      <text x="24" y="36" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="18" font-weight="700">Evacuation Center Availability</text>
+      <line x1="0" y1="64" x2="640" y2="64" stroke="#C2D6E0"/>
+
+      <g transform="translate(24, 86)">
+        <rect width="592" height="130" rx="8" fill="#F4F8FA" stroke="#C2D6E0"/>
+        <text x="20" y="30" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="15" font-weight="700">Surigao City Provincial Gymnasium</text>
+        <text x="20" y="84" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Occupancy: 180 / 500 evacuees (36%)</text>
+        <rect x="20" y="96" width="552" height="10" rx="5" fill="#E6F0F4"/>
+        <rect x="20" y="96" width="198" height="10" rx="5" fill="#008B9E"/>
+      </g>
+    </g>
+  </g>
+</svg>
+

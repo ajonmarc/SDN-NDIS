@@ -1,0 +1,74 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="regLeftGrad" x1="0" y1="0" x2="840" y2="900" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#021824"/>
+      <stop offset="50%" stop-color="#033956"/>
+      <stop offset="100%" stop-color="#00606F"/>
+    </linearGradient>
+    <linearGradient id="regTopBar" x1="926" y1="120" x2="1374" y2="120" gradientUnits="userSpaceOnUse">
+      <stop offset="0%" stop-color="#033956"/>
+      <stop offset="50%" stop-color="#007687"/>
+      <stop offset="100%" stop-color="#F37F20"/>
+    </linearGradient>
+  </defs>
+
+  <rect id="Register-Screen-Bg" width="1440" height="900" fill="#F4F8FA"/>
+
+  <!-- Left Showcase Panel -->
+  <g id="Left-Brand-Panel">
+    <rect width="840" height="900" fill="url(#regLeftGrad)"/>
+    <g transform="translate(48, 40)">
+      <circle cx="24" cy="24" r="24" fill="#008B9E" stroke="#38E0F5" stroke-width="2"/>
+      <path d="M24 14L31 17V23C31 27.5 28 31.5 24 33C20 31.5 17 27.5 17 23V17L24 14Z" fill="#F37F20"/>
+      <text x="60" y="22" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="18" font-weight="700">SDN-NDIS</text>
+      <text x="60" y="40" fill="#A5F3FC" font-family="Oxanium, Inter, sans-serif" font-size="12">Province of Surigao del Norte</text>
+    </g>
+
+    <g transform="translate(48, 220)">
+      <text x="0" y="36" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="36" font-weight="800">Surigao del Norte Natural Disaster</text>
+      <text x="0" y="80" fill="#38E0F5" font-family="Oxanium, Inter, sans-serif" font-size="36" font-weight="800">Information System</text>
+      <text x="0" y="120" fill="#E2E8F0" font-family="Oxanium, Inter, sans-serif" font-size="15">Register a Citizen Guest Account to view live Surigao del Norte disaster maps,</text>
+      <text x="0" y="142" fill="#E2E8F0" font-family="Oxanium, Inter, sans-serif" font-size="15">evacuation center capacities, and official PDRRMO advisories.</text>
+    </g>
+  </g>
+
+  <!-- Right Register Card -->
+  <g id="Right-Register-Panel">
+    <rect x="926" y="116" width="448" height="668" rx="10" fill="#FFFFFF" stroke="#C2D6E0"/>
+    <rect x="926" y="116" width="448" height="6" rx="3" fill="url(#regTopBar)"/>
+
+    <g transform="translate(958, 146)">
+      <circle cx="192" cy="28" r="28" fill="#033956" stroke="#008B9E" stroke-width="1.5"/>
+      <text x="192" y="84" text-anchor="middle" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="21" font-weight="800">Create Citizen Account</text>
+      <text x="192" y="106" text-anchor="middle" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="12">Register to view live Surigao del Norte disaster maps &amp; advisories</text>
+
+      <!-- Fields -->
+      <g transform="translate(0, 134)">
+        <text x="0" y="14" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13" font-weight="600">Full Name</text>
+        <rect y="22" width="384" height="40" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="14" y="47" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="13">e.g. Juan Dela Cruz</text>
+
+        <text x="0" y="92" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13" font-weight="600">Email Address</text>
+        <rect y="100" width="384" height="40" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="14" y="125" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="13">name@example.com</text>
+
+        <text x="0" y="170" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13" font-weight="600">Password</text>
+        <rect y="178" width="384" height="40" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="14" y="203" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="13">Create a strong password</text>
+
+        <text x="0" y="248" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13" font-weight="600">Confirm Password</text>
+        <rect y="256" width="384" height="40" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="14" y="281" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="13">Re-enter your password</text>
+
+        <rect y="318" width="384" height="44" rx="6" fill="#007687"/>
+        <text x="192" y="345" text-anchor="middle" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="14" font-weight="700">+ Create Account</text>
+
+        <line x1="0" y1="384" x2="384" y2="384" stroke="#C2D6E0"/>
+        <text x="192" y="414" text-anchor="middle" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="13">
+          Already have an account? <tspan fill="#007687" font-weight="700">Sign in</tspan>
+        </text>
+      </g>
+    </g>
+  </g>
+</svg>
+

@@ -1,0 +1,115 @@
+<svg width="1440" height="920" viewBox="0 0 1440 920" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect id="PDRRMO-Evacuation-CRUD-Bg" width="1440" height="920" fill="#F4F8FA"/>
+
+  <!-- PDRRMO Sidebar -->
+  <g id="PDRRMO-Sidebar">
+    <rect width="260" height="920" fill="#EBF3F6" stroke="#C2D6E0"/>
+    <g transform="translate(20, 20)">
+      <circle cx="20" cy="20" r="20" fill="#033956" stroke="#008B9E" stroke-width="1.5"/>
+      <text x="50" y="19" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="15" font-weight="800">SDN-NDIS</text>
+      <text x="50" y="34" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="600">PDRRMO Operations</text>
+    </g>
+    <line x1="16" y1="74" x2="244" y2="74" stroke="#C2D6E0"/>
+    <g transform="translate(14, 92)">
+      <rect y="26" width="232" height="40" rx="6" fill="#EBF3F6"/>
+      <text x="40" y="51" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13">Dashboard</text>
+      <rect y="72" width="232" height="40" rx="6" fill="#EBF3F6"/>
+      <text x="40" y="97" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13">Disasters</text>
+      <rect y="118" width="232" height="40" rx="6" fill="#EBF3F6"/>
+      <text x="40" y="143" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13">Disaster Updates</text>
+      <rect y="164" width="232" height="40" rx="6" fill="#EBF3F6"/>
+      <text x="40" y="189" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13">Disaster Types</text>
+      <rect y="210" width="232" height="40" rx="6" fill="#033956"/>
+      <text x="40" y="235" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="13" font-weight="700">Evacuation Centers</text>
+      <rect y="256" width="232" height="40" rx="6" fill="#EBF3F6"/>
+      <text x="40" y="281" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13">Municipalities</text>
+      <rect y="302" width="232" height="40" rx="6" fill="#EBF3F6"/>
+      <text x="40" y="327" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13">Access Logs</text>
+    </g>
+  </g>
+
+  <!-- Main Content -->
+  <g transform="translate(260, 0)">
+    <rect width="1180" height="60" fill="#FFFFFF" stroke="#C2D6E0"/>
+    <text x="32" y="35" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="14" font-weight="600">Evacuation Centers</text>
+
+    <g transform="translate(32, 84)">
+      <text x="0" y="24" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="24" font-weight="800">Evacuation Centers</text>
+      <text x="0" y="46" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="13">Manage shelter facilities, photos, capacity, occupancy, and GPS coordinates</text>
+      <rect x="944" y="8" width="172" height="40" rx="6" fill="#007687"/>
+      <text x="1030" y="33" text-anchor="middle" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="13" font-weight="700">+ New Evacuation Center</text>
+    </g>
+
+    <!-- Table Card -->
+    <g transform="translate(32, 156)">
+      <rect width="620" height="720" rx="10" fill="#FFFFFF" stroke="#C2D6E0"/>
+      <rect x="20" y="20" width="260" height="38" rx="6" fill="#F4F8FA" stroke="#C2D6E0"/>
+      <text x="36" y="44" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="12">Search centers...</text>
+
+      <rect x="1" y="76" width="618" height="40" fill="#E6F0F4"/>
+      <text x="20" y="101" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="700">Photo</text>
+      <text x="80" y="101" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="700">Center Name</text>
+      <text x="260" y="101" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="700">Municipality</text>
+      <text x="380" y="101" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="700">Occupancy</text>
+      <text x="475" y="101" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="700">Status</text>
+      <text x="545" y="101" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="700">Actions</text>
+
+      <g transform="translate(0, 116)">
+        <line x1="0" y1="68" x2="620" y2="68" stroke="#E6F0F4"/>
+        <rect x="20" y="16" width="44" height="36" rx="6" fill="#D5E9EF" stroke="#C2D6E0"/>
+        <text x="80" y="39" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="700">Surigao City Gym</text>
+        <text x="260" y="39" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="12">Surigao City</text>
+        <text x="380" y="39" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="700">180 / 500</text>
+        <text x="475" y="39" fill="#16A34A" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="700">Open</text>
+        <rect x="544" y="18" width="28" height="28" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="558" y="37" text-anchor="middle" fill="#032539" font-size="11">✎</text>
+        <rect x="576" y="18" width="28" height="28" rx="6" fill="#DC2626"/>
+        <text x="590" y="37" text-anchor="middle" fill="#FFFFFF" font-size="11">🗑</text>
+      </g>
+    </g>
+
+    <!-- Evacuation Center FormDialog Modal -->
+    <g transform="translate(672, 156)">
+      <rect width="476" height="720" rx="12" fill="#FFFFFF" stroke="#007687" stroke-width="2"/>
+      <text x="24" y="36" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="18" font-weight="800">Evacuation Center Modal</text>
+      <text x="24" y="56" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="12">Upload shelter photo, capacity, occupancy, and GPS coordinates</text>
+      <line x1="0" y1="72" x2="476" y2="72" stroke="#C2D6E0"/>
+
+      <g transform="translate(24, 90)">
+        <text x="0" y="14" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Center Name</text>
+        <rect y="22" width="428" height="38" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="14" y="46" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12">Surigao City Provincial Gymnasium</text>
+
+        <text x="0" y="84" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Municipality</text>
+        <rect y="92" width="206" height="38" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="14" y="116" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12">Surigao City ▾</text>
+
+        <text x="222" y="84" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Operational Status</text>
+        <rect x="222" y="92" width="206" height="38" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="236" y="116" fill="#16A34A" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="700">Open ▾</text>
+
+        <text x="0" y="154" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Total Capacity</text>
+        <rect y="162" width="206" height="38" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="14" y="186" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12">500</text>
+
+        <text x="222" y="154" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Current Occupancy</text>
+        <rect x="222" y="162" width="206" height="38" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="236" y="186" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12">180</text>
+
+        <text x="0" y="224" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Full Address</text>
+        <rect y="232" width="428" height="54" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="14" y="258" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12">Brgy. Washington, Surigao City, Surigao del Norte</text>
+
+        <text x="0" y="308" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Center Photo Upload</text>
+        <rect y="316" width="428" height="84" rx="8" fill="#F4F8FA" stroke="#007687" stroke-dasharray="4 4"/>
+        <text x="214" y="362" text-anchor="middle" fill="#007687" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Click to upload center image (JPG, PNG, WEBP)</text>
+
+        <rect x="220" y="486" width="88" height="38" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="264" y="510" text-anchor="middle" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Cancel</text>
+        <rect x="318" y="486" width="110" height="38" rx="6" fill="#007687"/>
+        <text x="373" y="510" text-anchor="middle" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="700">Save Center</text>
+      </g>
+    </g>
+  </g>
+</svg>
+

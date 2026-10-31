@@ -1,0 +1,136 @@
+<svg width="1440" height="900" viewBox="0 0 1440 900" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Root Canvas -->
+  <rect id="GIS-Map-Screen-Bg" width="1440" height="900" fill="#F4F8FA"/>
+
+  <!-- Left Sidebar (250px) -->
+  <g id="Guest-Sidebar">
+    <rect width="250" height="900" fill="#EBF3F6" stroke="#C2D6E0"/>
+    <g transform="translate(20, 20)">
+      <circle cx="20" cy="20" r="20" fill="#033956" stroke="#008B9E" stroke-width="1.5"/>
+      <path d="M20 10L27 13V19.5C27 24 24 28 20 29.5C16 28 13 24 13 19.5V13L20 10Z" fill="#F37F20"/>
+      <text x="50" y="19" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="15" font-weight="800">SDN-NDIS</text>
+      <text x="50" y="34" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="600">Citizen &amp; Guest Portal</text>
+    </g>
+    <line x1="16" y1="74" x2="234" y2="74" stroke="#C2D6E0"/>
+
+    <g transform="translate(14, 94)">
+      <rect width="222" height="40" rx="6" fill="#EBF3F6"/>
+      <text x="36" y="25" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13" font-weight="500">Guest Dashboard</text>
+
+      <rect y="48" width="222" height="40" rx="6" fill="#033956"/>
+      <text x="36" y="73" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="13" font-weight="700">Disaster &amp; Evacuation Map</text>
+
+      <rect y="96" width="222" height="40" rx="6" fill="#EBF3F6"/>
+      <text x="36" y="121" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13" font-weight="500">Disasters &amp; Updates</text>
+
+      <rect y="144" width="222" height="40" rx="6" fill="#EBF3F6"/>
+      <text x="36" y="169" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13" font-weight="500">Evacuation Centers</text>
+    </g>
+  </g>
+
+  <!-- Main Workspace -->
+  <g id="GIS-Map-Workspace" transform="translate(250, 0)">
+    <!-- Top Header & Filter Bar -->
+    <rect width="1190" height="120" fill="#FFFFFF" stroke="#C2D6E0"/>
+    <text x="32" y="40" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="22" font-weight="800">Surigao del Norte GIS Disaster &amp; Evacuation Map</text>
+    <text x="32" y="62" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="13" font-weight="400">Interactive geographic map of active disasters and designated evacuation shelters across all 21 municipalities</text>
+
+    <!-- Filter Pills -->
+    <g id="Map-Filter-Toolbar" transform="translate(32, 76)">
+      <rect width="114" height="32" rx="6" fill="#007687"/>
+      <text x="57" y="21" text-anchor="middle" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="700">All Markers (5)</text>
+
+      <rect x="124" width="136" height="32" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+      <circle cx="142" cy="16" r="5" fill="#DC2626"/>
+      <text x="198" y="21" text-anchor="middle" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Disasters (1)</text>
+
+      <rect x="270" width="176" height="32" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+      <circle cx="288" cy="16" r="5" fill="#16A34A"/>
+      <text x="364" y="21" text-anchor="middle" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Evacuation Centers (4)</text>
+
+      <rect x="920" width="206" height="32" rx="6" fill="#F4F8FA" stroke="#C2D6E0"/>
+      <text x="936" y="21" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="500">All 21 Municipalities ▾</text>
+    </g>
+
+    <!-- Interactive Map Viewport (780x732) -->
+    <g id="Leaflet-GIS-Map-Viewport" transform="translate(24, 140)">
+      <rect width="780" height="736" rx="12" fill="#CBE7F2" stroke="#C2D6E0" stroke-width="1.5"/>
+
+      <!-- Stylized Surigao del Norte Mainland & Siargao/Bucas Grande Islands -->
+      <path id="Mainland-Surigao" d="M120 420 L185 320 L270 290 L355 340 L390 450 L360 640 L180 680 L110 560 Z" fill="#DCEFE3" stroke="#86B89A" stroke-width="2"/>
+      <path id="Siargao-Island" d="M510 150 L595 120 L650 210 L620 330 L535 350 L490 260 Z" fill="#DCEFE3" stroke="#86B89A" stroke-width="2"/>
+      <path id="Dinagat-Outline" d="M310 90 L380 70 L410 210 L345 245 L295 170 Z" fill="#E6F2EA" stroke="#9EC4AC" stroke-width="1.5"/>
+
+      <!-- Water Labels -->
+      <text x="430" y="490" fill="#00606F" fill-opacity="0.5" font-family="Oxanium, Inter, sans-serif" font-size="14" font-weight="700" letter-spacing="2">HINATUAN PASSAGE</text>
+      <text x="90" y="210" fill="#00606F" fill-opacity="0.5" font-family="Oxanium, Inter, sans-serif" font-size="14" font-weight="700" letter-spacing="2">SURIGAO STRAIT</text>
+
+      <!-- Active Disaster Pin (Surigao City) -->
+      <g id="Pin-Disaster-Surigao-City" transform="translate(255, 315)">
+        <circle cx="0" cy="0" r="28" fill="#DC2626" fill-opacity="0.22"/>
+        <circle cx="0" cy="0" r="14" fill="#DC2626" stroke="#FFFFFF" stroke-width="3"/>
+        <text x="0" y="5" text-anchor="middle" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="13" font-weight="800">!</text>
+      </g>
+
+      <!-- Evacuation Shelter Pin 1 (Surigao City Gym) -->
+      <g id="Pin-Shelter-Surigao" transform="translate(285, 345)">
+        <circle cx="0" cy="0" r="13" fill="#16A34A" stroke="#FFFFFF" stroke-width="2.5"/>
+        <text x="0" y="4" text-anchor="middle" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="800">H</text>
+      </g>
+
+      <!-- Evacuation Shelter Pin 2 (Dapa, Siargao) -->
+      <g id="Pin-Shelter-Dapa" transform="translate(565, 295)">
+        <circle cx="0" cy="0" r="13" fill="#16A34A" stroke="#FFFFFF" stroke-width="2.5"/>
+        <text x="0" y="4" text-anchor="middle" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="800">H</text>
+      </g>
+
+      <!-- Evacuation Shelter Pin 3 (Claver) -->
+      <g id="Pin-Shelter-Claver" transform="translate(350, 520)">
+        <circle cx="0" cy="0" r="13" fill="#F37F20" stroke="#FFFFFF" stroke-width="2.5"/>
+        <text x="0" y="4" text-anchor="middle" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="800">H</text>
+      </g>
+
+      <!-- Open Map Popup Card -->
+      <g id="Active-Map-Popup" transform="translate(120, 175)">
+        <rect width="276" height="118" rx="8" fill="#FFFFFF" stroke="#C2D6E0" stroke-width="1.5"/>
+        <rect x="14" y="14" width="68" height="20" rx="4" fill="#FEE2E2"/>
+        <text x="48" y="28" text-anchor="middle" fill="#DC2626" font-family="Oxanium, Inter, sans-serif" font-size="10" font-weight="700">CRITICAL</text>
+        <text x="90" y="28" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="600">Surigao City</text>
+        <text x="14" y="54" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13" font-weight="700">Tropical Storm Coastal Surge</text>
+        <text x="14" y="74" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="400">Typhoon • Active Pre-emptive Evacuation</text>
+        <text x="14" y="98" fill="#007687" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="700">9.7890° N, 125.4950° E</text>
+      </g>
+    </g>
+
+    <!-- Right Details Side Panel (346px) -->
+    <g id="Right-Map-Inspector-Panel" transform="translate(822, 140)">
+      <rect width="344" height="736" rx="12" fill="#FFFFFF" stroke="#C2D6E0"/>
+      <text x="20" y="34" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="16" font-weight="700">Selected Map Pin Details</text>
+      <line x1="0" y1="50" x2="344" y2="50" stroke="#C2D6E0"/>
+
+      <g transform="translate(20, 68)">
+        <rect width="74" height="24" rx="4" fill="#FEE2E2"/>
+        <text x="37" y="16" text-anchor="middle" fill="#DC2626" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="700">CRITICAL</text>
+        <rect x="82" width="64" height="24" rx="4" fill="#FEF3C7"/>
+        <text x="114" y="16" text-anchor="middle" fill="#D97706" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="700">ACTIVE</text>
+
+        <text x="0" y="52" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="17" font-weight="800">Tropical Storm Coastal Surge</text>
+        <text x="0" y="74" fill="#007687" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Municipality: Surigao City</text>
+        <text x="0" y="96" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="400">Type: Typhoon • Occurred: Oct 31, 2026</text>
+
+        <rect y="116" width="304" height="86" rx="8" fill="#F4F8FA" stroke="#C2D6E0"/>
+        <text x="14" y="140" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="500">Pre-emptive evacuation ordered for</text>
+        <text x="14" y="158" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="500">coastal barangays. Proceed to Surigao</text>
+        <text x="14" y="176" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="500">City Provincial Gymnasium.</text>
+
+        <text x="0" y="234" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="14" font-weight="700">Nearest Evacuation Centers</text>
+
+        <rect y="248" width="304" height="84" rx="8" fill="#F4F8FA" stroke="#C2D6E0"/>
+        <text x="14" y="272" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13" font-weight="700">Surigao City Provincial Gym</text>
+        <text x="14" y="292" fill="#16A34A" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="700">AVAILABLE • 320 open slots</text>
+        <text x="14" y="312" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="400">Brgy. Washington, Surigao City</text>
+      </g>
+    </g>
+  </g>
+</svg>
+

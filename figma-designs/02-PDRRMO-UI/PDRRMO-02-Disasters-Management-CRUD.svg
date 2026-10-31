@@ -1,0 +1,125 @@
+<svg width="1440" height="920" viewBox="0 0 1440 920" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect id="PDRRMO-Disasters-CRUD-Bg" width="1440" height="920" fill="#F4F8FA"/>
+
+  <!-- PDRRMO Sidebar -->
+  <g id="PDRRMO-Sidebar">
+    <rect width="260" height="920" fill="#EBF3F6" stroke="#C2D6E0"/>
+    <g transform="translate(20, 20)">
+      <circle cx="20" cy="20" r="20" fill="#033956" stroke="#008B9E" stroke-width="1.5"/>
+      <path d="M20 10L27 13V19.5C27 24 24 28 20 29.5C16 28 13 24 13 19.5V13L20 10Z" fill="#F37F20"/>
+      <text x="50" y="19" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="15" font-weight="800">SDN-NDIS</text>
+      <text x="50" y="34" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="600">PDRRMO Operations</text>
+    </g>
+    <line x1="16" y1="74" x2="244" y2="74" stroke="#C2D6E0"/>
+    <g transform="translate(14, 92)">
+      <text x="10" y="14" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="10" font-weight="700">PDRRMO COMMAND MENU</text>
+      <rect y="26" width="232" height="40" rx="6" fill="#EBF3F6"/>
+      <text x="40" y="51" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13">Dashboard</text>
+      <rect y="72" width="232" height="40" rx="6" fill="#033956"/>
+      <text x="40" y="97" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="13" font-weight="700">Disasters</text>
+      <rect y="118" width="232" height="40" rx="6" fill="#EBF3F6"/>
+      <text x="40" y="143" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13">Disaster Updates</text>
+      <rect y="164" width="232" height="40" rx="6" fill="#EBF3F6"/>
+      <text x="40" y="189" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13">Disaster Types</text>
+      <rect y="210" width="232" height="40" rx="6" fill="#EBF3F6"/>
+      <text x="40" y="235" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13">Evacuation Centers</text>
+      <rect y="256" width="232" height="40" rx="6" fill="#EBF3F6"/>
+      <text x="40" y="281" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13">Municipalities</text>
+      <rect y="302" width="232" height="40" rx="6" fill="#EBF3F6"/>
+      <text x="40" y="327" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="13">Access Logs</text>
+    </g>
+  </g>
+
+  <!-- Main Workspace -->
+  <g id="PDRRMO-Disasters-Main" transform="translate(260, 0)">
+    <rect width="1180" height="60" fill="#FFFFFF" stroke="#C2D6E0"/>
+    <text x="32" y="35" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="14" font-weight="600">Disasters</text>
+
+    <g transform="translate(32, 84)">
+      <text x="0" y="24" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="24" font-weight="800">Disasters</text>
+      <text x="0" y="46" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="13">Record and manage natural disaster incidents across Surigao del Norte</text>
+      <rect x="970" y="8" width="146" height="40" rx="6" fill="#007687"/>
+      <text x="1043" y="33" text-anchor="middle" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="13" font-weight="700">+ New Disaster</text>
+    </g>
+
+    <!-- SimpleTable Left Card -->
+    <g transform="translate(32, 156)">
+      <rect width="620" height="720" rx="10" fill="#FFFFFF" stroke="#C2D6E0"/>
+      <rect x="20" y="20" width="260" height="38" rx="6" fill="#F4F8FA" stroke="#C2D6E0"/>
+      <text x="36" y="44" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="12">Search disasters...</text>
+
+      <rect x="1" y="76" width="618" height="40" fill="#E6F0F4"/>
+      <text x="20" y="101" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="700">Title ↕</text>
+      <text x="200" y="101" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="700">Municipality</text>
+      <text x="325" y="101" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="700">Type</text>
+      <text x="405" y="101" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="700">Severity</text>
+      <text x="485" y="101" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="700">Status</text>
+      <text x="550" y="101" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="11" font-weight="700">Actions</text>
+
+      <g transform="translate(0, 116)">
+        <line x1="0" y1="68" x2="620" y2="68" stroke="#E6F0F4"/>
+        <text x="20" y="39" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="700">Tropical Storm Surge</text>
+        <text x="200" y="39" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="12">Surigao City</text>
+        <text x="325" y="39" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="12">Typhoon</text>
+        <text x="405" y="39" fill="#DC2626" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="700">Critical</text>
+        <text x="485" y="39" fill="#D97706" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="700">Active</text>
+        <rect x="544" y="18" width="28" height="28" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="558" y="37" text-anchor="middle" fill="#032539" font-size="11">✎</text>
+        <rect x="576" y="18" width="28" height="28" rx="6" fill="#DC2626"/>
+        <text x="590" y="37" text-anchor="middle" fill="#FFFFFF" font-size="11">🗑</text>
+      </g>
+    </g>
+
+    <!-- Create / Edit Disaster FormDialog Modal -->
+    <g id="Disaster-FormDialog-Modal" transform="translate(672, 156)">
+      <rect width="476" height="720" rx="12" fill="#FFFFFF" stroke="#007687" stroke-width="2"/>
+      <text x="24" y="36" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="18" font-weight="800">Create / Edit Disaster Modal</text>
+      <text x="24" y="56" fill="#3B5C6E" font-family="Oxanium, Inter, sans-serif" font-size="12">Auto-fills municipality GPS coordinates on selection</text>
+      <line x1="0" y1="72" x2="476" y2="72" stroke="#C2D6E0"/>
+
+      <g transform="translate(24, 90)">
+        <text x="0" y="14" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Disaster Title</text>
+        <rect y="22" width="428" height="38" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="14" y="46" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12">Tropical Storm Coastal Surge</text>
+
+        <text x="0" y="84" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Municipality</text>
+        <rect y="92" width="206" height="38" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="14" y="116" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12">Surigao City ▾</text>
+
+        <text x="222" y="84" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Disaster Type</text>
+        <rect x="222" y="92" width="206" height="38" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="236" y="116" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12">Typhoon ▾</text>
+
+        <text x="0" y="154" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Severity</text>
+        <rect y="162" width="206" height="38" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="14" y="186" fill="#DC2626" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="700">Critical ▾</text>
+
+        <text x="222" y="154" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Status</text>
+        <rect x="222" y="162" width="206" height="38" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="236" y="186" fill="#D97706" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="700">Active ▾</text>
+
+        <text x="0" y="224" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Latitude (Auto-filled)</text>
+        <rect y="232" width="206" height="38" rx="6" fill="#F4F8FA" stroke="#C2D6E0"/>
+        <text x="14" y="256" fill="#007687" font-family="Source Code Pro, monospace" font-size="12">9.78900000</text>
+
+        <text x="222" y="224" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Longitude (Auto-filled)</text>
+        <rect x="222" y="232" width="206" height="38" rx="6" fill="#F4F8FA" stroke="#C2D6E0"/>
+        <text x="236" y="256" fill="#007687" font-family="Source Code Pro, monospace" font-size="12">125.49500000</text>
+
+        <text x="0" y="294" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Occurred At</text>
+        <rect y="302" width="428" height="38" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="14" y="326" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12">2026-10-31 16:00</text>
+
+        <text x="0" y="364" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Description</text>
+        <rect y="372" width="428" height="86" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="14" y="398" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12">Pre-emptive evacuation ongoing for coastal barangays.</text>
+
+        <rect x="220" y="486" width="88" height="38" rx="6" fill="#FFFFFF" stroke="#C2D6E0"/>
+        <text x="264" y="510" text-anchor="middle" fill="#032539" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="600">Cancel</text>
+        <rect x="318" y="486" width="110" height="38" rx="6" fill="#007687"/>
+        <text x="373" y="510" text-anchor="middle" fill="#FFFFFF" font-family="Oxanium, Inter, sans-serif" font-size="12" font-weight="700">Save Disaster</text>
+      </g>
+    </g>
+  </g>
+</svg>
+
