@@ -58,7 +58,7 @@ const handleLogout = () => {
             <template v-if="isHead">
                 <NavMain label="Head" :items="headNavItems" />
                 <NavMain label="PDRRMO" :items="pdrrmoNavItems" />
-                <NavMain label="Guest" :items="guestNavItems" />
+                <!-- <NavMain label="Guest" :items="guestNavItems" /> -->
             </template>
 
             <template v-else-if="isPdrrmo">
