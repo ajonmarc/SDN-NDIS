@@ -8,9 +8,8 @@ class RegisterResponse implements RegisterResponseContract
 {
     public function toResponse($request)
     {
-     
         return $request->wantsJson()
             ? response()->json(['status' => true])
-            : redirect()->route('guest.dashboard');
+            : redirect()->to(route('guest.dashboard', absolute: false));
     }
 }
